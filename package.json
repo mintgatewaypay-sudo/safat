@@ -1,0 +1,16 @@
+{
+  "name": "himyan-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Himyan national payment card website with application intake and admin dashboard",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "pg": "^8.16.3"
+  }
+}

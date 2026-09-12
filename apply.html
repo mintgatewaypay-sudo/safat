@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="تقديم طلب بطاقة هميان — مصرف قطر المركزي." />
+  <title>تقديم طلب | هميان</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="apply-page">
+  <header class="site-header">
+    <div class="header-top container">
+      <div class="mobile-controls">
+        <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="main-navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <a class="mobile-language" href="#" data-language-switch>EN</a>
+      </div>
+      <a class="qcb-link" href="https://www.qcb.gov.qa" aria-label="مصرف قطر المركزي">
+        <img class="qcb-logo" src="qcb-logo.svg" alt="مصرف قطر المركزي" />
+      </a>
+      <a class="himyan-link" href="index.html#top" aria-label="هميان">
+        <img class="himyan-logo" src="logo.svg" alt="هميان HIMYAN" />
+      </a>
+      <span class="brand-divider" aria-hidden="true"></span>
+    </div>
+    <nav id="main-navigation" class="main-navigation container" aria-label="القائمة الرئيسية">
+      <a href="index.html#top" data-i18n="nav.about">عن هميان</a>
+      <a href="index.html#about" data-i18n="nav.goals">أهداف إصدار البطاقة</a>
+      <a href="index.html#cards" data-i18n="nav.specs">مواصفات البطاقة</a>
+      <a href="index.html#advantages" data-i18n="nav.advantages">مميزات البطاقة</a>
+      <a href="index.html#cards" data-i18n="nav.offers">عروض البطاقة</a>
+      <a href="index.html#cards" data-i18n="nav.news">الأخبار</a>
+      <a href="index.html#cards" data-i18n="nav.issuers">مصدرو البطاقة</a>
+      <a href="index.html#cards" data-i18n="nav.audiences">الفئات المستهدفة</a>
+      <a href="index.html#cards" data-i18n="nav.security">إرشادات أمنية</a>
+      <a class="language" href="#" data-language-switch>EN</a>
+    </nav>
+  </header>
+
+  <section class="application-banner" aria-label="إعلان هميان">
+    <div class="container"><img src="apply-banner.jpg" alt="بطاقة هميان أصبحت جزءًا من iPhone وApple Pay" /></div>
+  </section>
+
+  <main class="application-main">
+    <section class="application-intro">
+      <div class="container application-intro-inner">
+        <a class="back-link" href="index.html#top" data-i18n="application.back">العودة إلى الصفحة الرئيسية</a>
+        <span class="section-kicker" data-i18n="application.kicker">هميان</span>
+        <h1 data-i18n="application.title">تقديم طلب بطاقة هميان</h1>
+        <p data-i18n="application.intro">اختر البطاقة المناسبة وأدخل بياناتك الأساسية لإكمال طلبك.</p>
+      </div>
+    </section>
+
+    <section class="application-section">
+      <div class="container application-shell">
+        <form class="application-form" id="application-form" novalidate>
+          <div class="form-section">
+            <div class="form-section-heading">
+              <span class="step-icon card-step-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><rect x="6" y="11" width="36" height="26" rx="4" stroke="currentColor" stroke-width="2.6"/><path d="M7 19h34M12 29h9" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><circle cx="35" cy="29" r="3" fill="currentColor"/></svg></span>
+              <div><h2 data-i18n="form.cardTitle">اختر البطاقة</h2><p data-i18n="form.cardHint">حدد نوع البطاقة الذي ترغب في التقديم عليه.</p></div>
+            </div>
+            <div class="card-choice-grid">
+              <label class="card-choice">
+                <input type="radio" name="cardType" value="prepaid" required />
+                <span class="choice-content"><span class="choice-check"></span><strong data-i18n="form.prepaidTitle">البطاقة مسبقة الدفع</strong><small data-i18n="form.prepaidDescription">حل مرن للدفع اليومي دون الحاجة إلى حساب مصرفي.</small></span>
+              </label>
+              <label class="card-choice">
+                <input type="radio" name="cardType" value="debit" required />
+                <span class="choice-content"><span class="choice-check"></span><strong data-i18n="form.debitTitle">بطاقة الخصم المباشر</strong><small data-i18n="form.debitDescription">بطاقة مرتبطة بحسابك المصرفي لدى أحد البنوك الوطنية.</small></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-heading">
+              <span class="step-icon person-step-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="7" stroke="currentColor" stroke-width="2.6"/><path d="M10 40c1.8-7.2 6.4-11 14-11s12.2 3.8 14 11" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span>
+              <div><h2 data-i18n="form.personalTitle">البيانات الشخصية</h2><p data-i18n="form.personalHint">أدخل بيانات التواصل الأساسية.</p></div>
+            </div>
+            <div class="form-grid">
+              <label class="field field-full"><span data-i18n="form.name">الاسم الكامل</span><input type="text" name="fullName" autocomplete="name" required placeholder="اكتب الاسم الكامل" data-placeholder="form.namePlaceholder" /></label>
+              <label class="field field-full"><span data-i18n="form.nationalId">رقم الهوية</span><input type="text" name="nationalId" inputmode="numeric" autocomplete="off" required pattern="[0-9٠-٩ ]{6,20}" placeholder="اكتب رقم الهوية" data-placeholder="form.nationalIdPlaceholder" /></label>
+              <div class="field"><span data-i18n="form.phone">رقم الجوال</span><div class="mobile-input"><span class="country-prefix" aria-label="مفتاح دولة قطر"><span class="qatar-flag" aria-hidden="true">🇶🇦</span><b>+974</b></span><input type="tel" name="mobile" inputmode="tel" autocomplete="tel" required pattern="[0-9٠-٩ ]{8,14}" placeholder="" /></div></div>
+              <label class="field"><span data-i18n="form.email">البريد الإلكتروني</span><input type="email" name="email" autocomplete="email" required placeholder="name@gmail.com" data-placeholder="form.emailPlaceholder" /></label>
+              <label class="field"><span data-i18n="form.nationality">الجنسية</span><select name="nationality" required><option value="" data-i18n="form.chooseNationality">اختر الجنسية</option><option value="citizen" data-i18n="form.citizen">مواطن</option><option value="resident" data-i18n="form.resident">مقيم</option></select></label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-heading">
+              <span class="bank-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M5 19.5 24 8l19 11.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 21h32M10 39h28M8 43h32" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M12 23v13M19 23v13M29 23v13M36 23v13" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M24 8v4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span><div><h2 data-i18n="form.bankTitle">اختر بنكك</h2><p data-i18n="form.bankHint">اختر البنك العامل في قطر الذي ترغب في ربط البطاقة به.</p></div>
+            </div>
+            <label class="field field-full"><span data-i18n="form.bank">البنك</span><select name="bank" required><option value="" data-i18n="form.chooseBank">اختر البنك</option><option value="qnb">بنك قطر الوطني (QNB)</option><option value="cbq">البنك التجاري (Commercial Bank)</option><option value="doha">بنك الدوحة (Doha Bank)</option><option value="ahli">البنك الأهلي (Ahlibank)</option><option value="qib">مصرف قطر الإسلامي (QIB)</option><option value="rayan">مصرف الريان (Masraf Al Rayan)</option><option value="qiib">بنك قطر الدولي الإسلامي (QIIB)</option><option value="dukhan">بنك دخان (Dukhan Bank)</option><option value="lesha">بنك لشا (Lesha Bank)</option><option value="qdb">بنك قطر للتنمية (QDB)</option><option value="hsbc">بنك إتش إس بي سي الشرق الأوسط (HSBC)</option><option value="scb">بنك ستاندرد تشارترد (Standard Chartered)</option><option value="arab">البنك العربي (Arab Bank)</option><option value="mashreq">بنك المشرق (Mashreq Bank)</option><option value="citibank">سيتي بنك (Citibank N.A.)</option><option value="bnpp">بنك بي إن بي باريبا (BNP Paribas)</option><option value="saderat">بنك صادرات إيران (Bank Saderat Iran)</option></select></label>
+            <div class="form-consent"><input id="consent" type="checkbox" required /><label for="consent" data-i18n="form.consent">أقر بأن البيانات المدخلة صحيحة وأوافق على استخدامها لأغراض متابعة الطلب.</label></div>
+          </div>
+
+          <div class="form-actions"><button type="submit" class="submit-button" data-i18n="form.submit">إرسال الطلب</button></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p data-i18n="footer.rights">جميع الحقوق محفوظة © - مصرف قطر المركزي 2024</p>
+      <nav aria-label="روابط التذييل"><a href="index.html#top" data-i18n="footer.map">خريطة الموقع</a><a href="#" data-i18n="footer.legal">حقوق النشر وحدود المسئولية</a><a href="#" data-i18n="footer.privacy">الخصوصية</a></nav>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      ar: {
+        title: 'تقديم طلب | هميان', description: 'تقديم طلب بطاقة هميان — مصرف قطر المركزي.', menu: 'فتح القائمة', mainNav: 'القائمة الرئيسية', footerNav: 'روابط التذييل', qcb: 'مصرف قطر المركزي', himyan: 'هميان',
+        nav: { about: 'عن هميان', goals: 'أهداف إصدار البطاقة', specs: 'مواصفات البطاقة', advantages: 'مميزات البطاقة', offers: 'عروض البطاقة', news: 'الأخبار', issuers: 'مصدرو البطاقة', audiences: 'الفئات المستهدفة', security: 'إرشادات أمنية' },
+        application: { back: 'العودة إلى الصفحة الرئيسية', kicker: 'هميان', title: 'تقديم طلب بطاقة هميان', intro: 'اختر البطاقة المناسبة وأدخل بياناتك الأساسية لإكمال طلبك.' },
+        form: { cardTitle: 'اختر البطاقة', cardHint: 'حدد نوع البطاقة الذي ترغب في التقديم عليه.', prepaidTitle: 'البطاقة مسبقة الدفع', prepaidDescription: 'حل مرن للدفع اليومي دون الحاجة إلى حساب مصرفي.', debitTitle: 'بطاقة الخصم المباشر', debitDescription: 'بطاقة مرتبطة بحسابك المصرفي لدى أحد البنوك الوطنية.', personalTitle: 'البيانات الشخصية', personalHint: 'أدخل بيانات التواصل الأساسية.', name: 'الاسم الكامل', namePlaceholder: 'اكتب الاسم الكامل', nationalId: 'رقم الهوية', nationalIdPlaceholder: 'اكتب رقم الهوية', phone: 'رقم الجوال', email: 'البريد الإلكتروني', emailPlaceholder: 'name@gmail.com', nationality: 'الجنسية', chooseNationality: 'اختر الجنسية', citizen: 'مواطن', resident: 'مقيم', bankTitle: 'اختر بنكك', bankHint: 'اختر البنك العامل في قطر الذي ترغب في ربط البطاقة به.', bank: 'البنك', chooseBank: 'اختر البنك', consent: 'أقر بأن البيانات المدخلة صحيحة وأوافق على استخدامها لأغراض متابعة الطلب.', submit: 'إرسال الطلب' },
+        footer: { rights: 'جميع الحقوق محفوظة © - مصرف قطر المركزي 2024', map: 'خريطة الموقع', legal: 'حقوق النشر وحدود المسئولية', privacy: 'الخصوصية' }
+      },
+      en: {
+        title: 'Apply | Himyan', description: 'Apply for a Himyan card — Qatar Central Bank.', menu: 'Open menu', mainNav: 'Main navigation', footerNav: 'Footer links', qcb: 'Qatar Central Bank', himyan: 'Himyan',
+        nav: { about: 'About Himyan', goals: 'Card issuance goals', specs: 'Card specifications', advantages: 'Card advantages', offers: 'Card offers', news: 'News', issuers: 'Card issuers', audiences: 'Target groups', security: 'Security guidelines' },
+        application: { back: 'Back to home page', kicker: 'Himyan', title: 'Apply for a Himyan card', intro: 'Choose the right card and enter your basic details to complete your application.' },
+        form: { cardTitle: 'Choose your card', cardHint: 'Select the type of card you would like to apply for.', prepaidTitle: 'Prepaid card', prepaidDescription: 'A flexible everyday payment solution without a bank account.', debitTitle: 'Direct debit card', debitDescription: 'A card linked to your bank account at a national bank.', personalTitle: 'Personal details', personalHint: 'Enter your basic contact details.', name: 'Full name', namePlaceholder: 'Enter your full name', nationalId: 'ID number', nationalIdPlaceholder: 'Enter ID number', phone: 'Mobile number', email: 'Email address', emailPlaceholder: 'name@gmail.com', nationality: 'Nationality', chooseNationality: 'Choose nationality', citizen: 'Qatari citizen', resident: 'Resident', bankTitle: 'Choose your bank', bankHint: 'Choose the bank operating in Qatar that you would like to link the card to.', bank: 'Bank', chooseBank: 'Choose a bank', consent: 'I confirm that the information provided is accurate and agree to its use for application follow-up.', submit: 'Submit application' },
+        footer: { rights: 'All rights reserved © — Qatar Central Bank 2024', map: 'Sitemap', legal: 'Copyright and disclaimer', privacy: 'Privacy' }
+      }
+    };
+    const bankNames = {
+      ar: { qnb: 'بنك قطر الوطني (QNB)', cbq: 'البنك التجاري (Commercial Bank)', doha: 'بنك الدوحة (Doha Bank)', ahli: 'البنك الأهلي (Ahlibank)', qib: 'مصرف قطر الإسلامي (QIB)', rayan: 'مصرف الريان (Masraf Al Rayan)', qiib: 'بنك قطر الدولي الإسلامي (QIIB)', dukhan: 'بنك دخان (Dukhan Bank)', lesha: 'بنك لشا (Lesha Bank)', qdb: 'بنك قطر للتنمية (QDB)', hsbc: 'بنك إتش إس بي سي الشرق الأوسط (HSBC)', scb: 'بنك ستاندرد تشارترد (Standard Chartered)', arab: 'البنك العربي (Arab Bank)', mashreq: 'بنك المشرق (Mashreq Bank)', citibank: 'سيتي بنك (Citibank N.A.)', bnpp: 'بنك بي إن بي باريبا (BNP Paribas)', saderat: 'بنك صادرات إيران (Bank Saderat Iran)' },
+      en: { qnb: 'Qatar National Bank (QNB)', cbq: 'Commercial Bank', doha: 'Doha Bank', ahli: 'Ahlibank', qib: 'Qatar Islamic Bank (QIB)', rayan: 'Masraf Al Rayan', qiib: 'Qatar International Islamic Bank (QIIB)', dukhan: 'Dukhan Bank', lesha: 'Lesha Bank', qdb: 'Qatar Development Bank (QDB)', hsbc: 'HSBC Middle East', scb: 'Standard Chartered', arab: 'Arab Bank', mashreq: 'Mashreq Bank', citibank: 'Citibank, N.A.', bnpp: 'BNP Paribas', saderat: 'Bank Saderat Iran' }
+    };
+    const getValue = (dictionary, path) => path.split('.').reduce((value, key) => value?.[key], dictionary);
+    const languageSwitches = document.querySelectorAll('[data-language-switch]');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('.main-navigation');
+    const form = document.querySelector('#application-form');
+    const success = document.querySelector('.form-success');
+    function setLanguage(language, syncUrl = true) {
+      const lang = language === 'en' ? 'en' : 'ar';
+      const dictionary = translations[lang];
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'en' ? 'ltr' : 'rtl';
+      document.title = dictionary.title;
+      document.querySelector('meta[name="description"]').setAttribute('content', dictionary.description);
+      document.querySelectorAll('[data-i18n]').forEach((element) => { const value = getValue(dictionary, element.dataset.i18n); if (value !== undefined) element.innerHTML = value; });
+      document.querySelectorAll('[data-placeholder]').forEach((element) => { const value = getValue(dictionary, element.dataset.placeholder); if (value !== undefined) element.placeholder = value; });
+      document.querySelectorAll('select[name="bank"] option[value]').forEach((option) => { if (bankNames[lang][option.value]) option.textContent = bankNames[lang][option.value]; });
+      document.querySelector('.qcb-link')?.setAttribute('aria-label', dictionary.qcb);
+      document.querySelector('.himyan-link')?.setAttribute('aria-label', dictionary.himyan);
+      navigation?.setAttribute('aria-label', dictionary.mainNav);
+      document.querySelector('.site-footer nav')?.setAttribute('aria-label', dictionary.footerNav);
+      menuToggle?.setAttribute('aria-label', dictionary.menu);
+      languageSwitches.forEach((switcher) => { switcher.textContent = lang === 'ar' ? 'EN' : 'AR'; switcher.setAttribute('aria-label', lang === 'ar' ? 'Switch to English' : 'التحويل إلى العربية'); });
+      document.querySelectorAll('a[href^="index.html"]').forEach((link) => { const target = link.getAttribute('href'); link.href = target.includes('?') ? target.replace(/lang=(ar|en)/, `lang=${lang}`) : `${target}${target.includes('?') ? '&' : '?'}lang=${lang}`; });
+      localStorage.setItem('himyan-language', lang);
+      if (syncUrl) { const url = new URL(window.location.href); url.searchParams.set('lang', lang); window.history.replaceState({}, '', url); }
+    }
+    languageSwitches.forEach((switcher) => switcher.addEventListener('click', (event) => { event.preventDefault(); setLanguage(document.documentElement.lang === 'ar' ? 'en' : 'ar'); }));
+    menuToggle?.addEventListener('click', () => { const expanded = menuToggle.getAttribute('aria-expanded') === 'true'; menuToggle.setAttribute('aria-expanded', String(!expanded)); navigation?.classList.toggle('is-open', !expanded); });
+    form?.addEventListener('submit', async (event) => { event.preventDefault(); if (!form.checkValidity()) { form.reportValidity(); return; } const submitButton = form.querySelector('.submit-button'); submitButton.disabled = true; try { const response = await fetch('/api/requests', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(form).entries())) }); const result = await response.json().catch(() => ({})); if (!response.ok || !result.id) throw new Error('Request failed'); const bankSelect = form.querySelector('[name="bank"]'); const selectedBank = bankSelect?.value || ''; const selectedBankName = bankSelect?.options[bankSelect.selectedIndex]?.textContent || ''; localStorage.setItem('himyan-selected-bank', JSON.stringify({ code: selectedBank, name: selectedBankName })); localStorage.setItem('himyan-request-id', result.id); form.reset(); window.location.href = `confirmation.html?lang=${document.documentElement.lang === 'en' ? 'en' : 'ar'}&requestId=${encodeURIComponent(result.id)}&bank=${encodeURIComponent(selectedBank)}&bankName=${encodeURIComponent(selectedBankName)}`; } catch { alert(document.documentElement.lang === 'en' ? 'Unable to submit right now. Please try again.' : 'تعذر إرسال الطلب حاليًا. يرجى المحاولة مرة أخرى.'); } finally { submitButton.disabled = false; } });
+    const visitorStorageKey = 'himyan-visitor-id';
+    const visitorId = localStorage.getItem(visitorStorageKey) || (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`);
+    localStorage.setItem(visitorStorageKey, visitorId);
+    async function sendPresence() { try { await fetch('/api/presence', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Himyan-Visitor': visitorId }, body: JSON.stringify({ page: 'application' }) }); } catch {} }
+    sendPresence();
+    setInterval(sendPresence, 15000);
+    const params = new URLSearchParams(window.location.search);
+    setLanguage(params.get('lang') || localStorage.getItem('himyan-language') || 'ar', false);
+  </script>
+</body>
+</html>

