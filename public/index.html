@@ -1,182 +1,19 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="بطاقة الدفع الوطنية هميان — مصرف قطر المركزي." />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="هميان، بطاقة الدفع الوطنية من مصرف قطر المركزي." />
   <title>هميان | بطاقة الدفع الوطنية</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--ink:#102f35;--deep:#071e23;--gold:#c79b63;--mint:#42b883;--paper:#fbfaf7;--line:#d9d6cf;--muted:#667477}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--paper);font-family:'Tajawal',sans-serif;line-height:1.7}h1,h2,h3,.brand{font-family:'Cairo',sans-serif}a{color:inherit;text-decoration:none}.container{width:min(1160px,calc(100% - 48px));margin:auto}.topbar{position:sticky;top:0;z-index:5;background:rgba(251,250,247,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.3rem}.brand img{width:42px;height:42px;object-fit:contain}.links{display:flex;gap:28px;color:var(--muted);font-weight:700}.links a:hover{color:var(--ink)}.lang{border:1px solid var(--line);padding:7px 16px;border-radius:99px;color:var(--ink);font-weight:700}.hero{background:linear-gradient(135deg,var(--ink),var(--deep));color:#fff;overflow:hidden}.hero-grid{min-height:520px;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;padding:72px 0}.eyebrow{color:var(--gold);font-weight:800;letter-spacing:.04em}h1{margin:12px 0 0;font-size:clamp(2.2rem,5vw,4.4rem);line-height:1.2;max-width:12ch}.hero p{max-width:48ch;color:rgba(255,255,255,.78);font-size:1.08rem}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:4px;font-weight:800}.primary{background:var(--mint);color:#fff}.secondary{border:1px solid rgba(255,255,255,.35);color:#fff}.hero-art{position:relative;min-height:330px;display:grid;place-items:center}.hero-art img{width:min(100%,470px);max-height:360px;object-fit:contain;filter:drop-shadow(0 24px 28px rgba(0,0,0,.25))}.hero-art:before{content:"";position:absolute;width:280px;height:280px;border:1px solid rgba(199,155,99,.55);border-radius:50%}.intro{padding:70px 0 30px;text-align:center}.intro h2{margin:0;font-size:clamp(1.7rem,3vw,2.5rem)}.intro p{max-width:58ch;margin:12px auto;color:var(--muted)}.features{padding:30px 0 88px}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.feature{background:#fff;border:1px solid var(--line);padding:28px;min-height:180px;border-top:4px solid var(--mint)}.feature:nth-child(2n){border-top-color:var(--gold)}.feature img{width:38px;height:38px;margin-bottom:14px}.feature h3{margin:0;font-size:1.05rem}.apply-band{background:#e9e6e0;border-block:1px solid var(--line);padding:54px 0;text-align:center}.apply-band h2{margin:0 0 8px}.apply-band p{margin:0 auto 22px;color:var(--muted)}footer{padding:28px 0;color:var(--muted);font-size:.9rem}footer .container{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}@media(max-width:800px){.links{display:none}.hero-grid{grid-template-columns:1fr;gap:20px;padding:54px 0}.hero-art{order:-1;min-height:220px}.hero-art img{max-height:230px}.feature-grid{grid-template-columns:1fr}.container{width:min(100% - 32px,1160px)}}
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-top container">
-      <div class="mobile-controls">
-        <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="main-navigation">
-          <span></span><span></span><span></span>
-        </button>
-        <a class="mobile-language" href="#" data-language-switch>EN</a>
-      </div>
-      <a class="qcb-link" href="https://www.qcb.gov.qa" aria-label="مصرف قطر المركزي">
-        <img class="qcb-logo" src="assets/qcb-logo.svg" alt="مصرف قطر المركزي" />
-      </a>
-      <a class="himyan-link" href="#top" aria-label="هميان">
-        <img class="himyan-logo" src="assets/logo.svg" alt="هميان HIMYAN" />
-      </a>
-      <span class="brand-divider" aria-hidden="true"></span>
-    </div>
-    <nav id="main-navigation" class="main-navigation container" aria-label="القائمة الرئيسية">
-      <a class="active" href="#top" data-i18n="nav.about">عن هميان</a>
-      <a href="#about" data-i18n="nav.goals">أهداف إصدار البطاقة</a>
-      <a href="#cards" data-i18n="nav.specs">مواصفات البطاقة</a>
-      <a href="#advantages" data-i18n="nav.advantages">مميزات البطاقة</a>
-      <a href="#cards" data-i18n="nav.offers">عروض البطاقة</a>
-      <a href="#cards" data-i18n="nav.news">الأخبار</a>
-      <a href="#cards" data-i18n="nav.issuers">مصدرو البطاقة</a>
-      <a href="#cards" data-i18n="nav.audiences">الفئات المستهدفة</a>
-      <a href="#cards" data-i18n="nav.security">إرشادات أمنية</a>
-      <a class="language" href="#" data-language-switch>EN</a>
-    </nav>
-  </header>
-
-  <main id="top">
-    <section id="about" class="hero-section">
-      <div class="hero-grid container">
-        <div class="hero-cards" aria-label="بطاقات هميان">
-          <img class="card-image card-prepaid" src="assets/card.svg" alt="بطاقة هميان مسبقة الدفع" />
-          <img class="card-image card-debit" src="assets/card2.svg" alt="بطاقة هميان للخصم المباشر" />
-        </div>
-        <div class="hero-copy">
-          <h1 data-i18n="hero.title">بطاقة الدفع الوطنية<br><span>"هميان"</span></h1>
-          <p data-i18n="hero.intro">هي أول بطاقة دفع وطنية بعلامة تجارية قطرية، مملـوكة لمصرف قطر المركزي.</p>
-          <p data-i18n="hero.description">يـأتـي إصدارها استكمالاً للمبادرات والمشاريع الوطنية الرائدة التي أطلقها مصرف قطر المركزي ضمن أهدافه الاستراتيجية وتطلعه الدائم نحو تحسين وتطوير أنظمة الدفع الرقمية مما يدعم مسيرة الابتكار والتحول الرقمي في النظام المالي في دولة قطر.</p>
-          <div id="cards" class="card-types">
-            <strong data-i18n="hero.types">أنواع البطاقة :</strong>
-            <a class="card-type" href="#apply"><span data-i18n="hero.prepaid">بطاقة مسبقة الدفع "هميان"</span><i></i></a>
-            <a class="card-type" href="#apply"><span data-i18n="hero.debit">بطاقة الخصم "هميان"</span><i></i></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="apply" class="apply-section">
-      <a class="apply-button" href="apply.html?lang=ar" data-apply-link data-i18n="apply.button">تقديم الطلب</a>
-      <p id="apply-form" class="apply-message" data-i18n="apply.message">سيتم تفعيل نموذج التقديم قريبًا.</p>
-    </section>
-
-    <section id="advantages" class="advantages-section" aria-labelledby="advantages-title">
-      <div class="advantages-shell container">
-        <div class="section-heading">
-          <span class="section-kicker" data-i18n="advantages.kicker">هميان</span>
-          <h2 id="advantages-title" data-i18n="advantages.title">مميزات البطاقة</h2>
-          <p data-i18n="advantages.intro">حلول دفع وطنية تمنحك مرونة وأمانًا أكبر في معاملاتك اليومية.</p>
-        </div>
-        <div class="advantages-grid">
-          <article class="advantage-card"><div class="advantage-icon"><img src="assets/account-link.svg" alt="" /></div><h3 data-i18n="advantages.one">ارتباط البطاقة بالحساب المصرفي الشخصي لدى البنوك الوطنية</h3></article>
-          <article class="advantage-card"><div class="advantage-icon"><img src="assets/no-minimum.svg" alt="" /></div><h3 data-i18n="advantages.two">لا يتطلب إصدار البطاقة حدًا أدنى من الرصيد</h3></article>
-          <article class="advantage-card"><div class="advantage-icon"><img src="assets/no-bank.svg" alt="" /></div><h3 data-i18n="advantages.three">لا يتطلب إصدار البطاقة امتلاك حساب مصرفي</h3></article>
-          <article class="advantage-card"><div class="advantage-icon"><img src="assets/free-first.svg" alt="" /></div><h3 data-i18n="advantages.four">يتم إصدارها مجانًا لأول مرة</h3></article>
-          <article class="advantage-card"><div class="advantage-icon"><img src="assets/naps.svg" alt="" /></div><h3 data-i18n="advantages.five">تبادل جميع المعاملات المالية محليًا عبر الشبكة الوطنية NAPS</h3></article>
-          <article class="advantage-card"><div class="advantage-icon"><img src="assets/security.svg" alt="" /></div><h3 data-i18n="advantages.six">تعزيز مستويات الحماية والأمان عند استخدامها</h3></article>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p data-i18n="footer.rights">جميع الحقوق محفوظة © - مصرف قطر المركزي 2024</p>
-      <nav aria-label="روابط التذييل"><a href="#" data-i18n="footer.map">خريطة الموقع</a><a href="#" data-i18n="footer.legal">حقوق النشر وحدود المسئولية</a><a href="#" data-i18n="footer.privacy">الخصوصية</a></nav>
-    </div>
-  </footer>
-
-  <script>
-    const translations = {
-      ar: {
-        title: 'هميان | بطاقة الدفع الوطنية',
-        description: 'بطاقة الدفع الوطنية هميان — مصرف قطر المركزي.',
-        menu: 'فتح القائمة',
-        mainNav: 'القائمة الرئيسية',
-        footerNav: 'روابط التذييل',
-        qcb: 'مصرف قطر المركزي',
-        himyan: 'هميان',
-        nav: { about: 'عن هميان', goals: 'أهداف إصدار البطاقة', specs: 'مواصفات البطاقة', advantages: 'مميزات البطاقة', offers: 'عروض البطاقة', news: 'الأخبار', issuers: 'مصدرو البطاقة', audiences: 'الفئات المستهدفة', security: 'إرشادات أمنية' },
-        hero: { title: 'بطاقة الدفع الوطنية<br><span>"هميان"</span>', intro: 'هي أول بطاقة دفع وطنية بعلامة تجارية قطرية، مملـوكة لمصرف قطر المركزي.', description: 'يـأتـي إصدارها استكمالاً للمبادرات والمشاريع الوطنية الرائدة التي أطلقها مصرف قطر المركزي ضمن أهدافه الاستراتيجية وتطلعه الدائم نحو تحسين وتطوير أنظمة الدفع الرقمية مما يدعم مسيرة الابتكار والتحول الرقمي في النظام المالي في دولة قطر.', types: 'أنواع البطاقة :', prepaid: 'بطاقة مسبقة الدفع "هميان"', debit: 'بطاقة الخصم "هميان"' },
-        apply: { button: 'تقديم الطلب', message: 'سيتم تفعيل نموذج التقديم قريبًا.' },
-        advantages: { kicker: 'هميان', title: 'مميزات البطاقة', intro: 'حلول دفع وطنية تمنحك مرونة وأمانًا أكبر في معاملاتك اليومية.', one: 'ارتباط البطاقة بالحساب المصرفي الشخصي لدى البنوك الوطنية', two: 'لا يتطلب إصدار البطاقة حدًا أدنى من الرصيد', three: 'لا يتطلب إصدار البطاقة امتلاك حساب مصرفي', four: 'يتم إصدارها مجانًا لأول مرة', five: 'تبادل جميع المعاملات المالية محليًا عبر الشبكة الوطنية NAPS', six: 'تعزيز مستويات الحماية والأمان عند استخدامها' },
-        footer: { rights: 'جميع الحقوق محفوظة © - مصرف قطر المركزي 2024', map: 'خريطة الموقع', legal: 'حقوق النشر وحدود المسئولية', privacy: 'الخصوصية' }
-      },
-      en: {
-        title: 'Himyan | National Payment Card',
-        description: 'Himyan National Payment Card — Qatar Central Bank.',
-        menu: 'Open menu',
-        mainNav: 'Main navigation',
-        footerNav: 'Footer links',
-        qcb: 'Qatar Central Bank',
-        himyan: 'Himyan',
-        nav: { about: 'About Himyan', goals: 'Card issuance goals', specs: 'Card specifications', advantages: 'Card advantages', offers: 'Card offers', news: 'News', issuers: 'Card issuers', audiences: 'Target groups', security: 'Security guidelines' },
-        hero: { title: 'National Payment Card<br><span>"Himyan"</span>', intro: 'The first national payment card with a Qatari brand, owned by Qatar Central Bank.', description: 'Its issuance completes the leading national initiatives and projects launched by Qatar Central Bank as part of its strategic objectives and ongoing vision to improve and develop digital payment systems, supporting innovation and digital transformation in Qatar’s financial system.', types: 'Card types:', prepaid: 'Himyan prepaid card', debit: 'Himyan debit card' },
-        apply: { button: 'Apply now', message: 'The application form will be available soon.' },
-        advantages: { kicker: 'Himyan', title: 'Card advantages', intro: 'National payment solutions that give you greater flexibility and security in your everyday transactions.', one: 'Link the card to your personal bank account at national banks', two: 'Issuing the card does not require a minimum balance', three: 'Issuing the card does not require a bank account', four: 'The card is issued free of charge for the first time', five: 'All financial transactions take place locally through the national NAPS network', six: 'Enhanced protection and security when using the card' },
-        footer: { rights: 'All rights reserved © — Qatar Central Bank 2024', map: 'Sitemap', legal: 'Copyright and disclaimer', privacy: 'Privacy' }
-      }
-    };
-
-    const getValue = (dictionary, path) => path.split('.').reduce((value, key) => value?.[key], dictionary);
-    const languageSwitches = document.querySelectorAll('[data-language-switch]');
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navigation = document.querySelector('.main-navigation');
-
-    function setLanguage(language, syncUrl = true) {
-      const lang = language === 'en' ? 'en' : 'ar';
-      const dictionary = translations[lang];
-      document.documentElement.lang = lang;
-      document.documentElement.dir = lang === 'en' ? 'ltr' : 'rtl';
-      document.title = dictionary.title;
-      document.querySelector('meta[name="description"]').setAttribute('content', dictionary.description);
-      document.querySelectorAll('[data-i18n]').forEach((element) => {
-        const value = getValue(dictionary, element.dataset.i18n);
-        if (value !== undefined) element.innerHTML = value;
-      });
-      document.querySelector('.qcb-link')?.setAttribute('aria-label', dictionary.qcb);
-      document.querySelector('.himyan-link')?.setAttribute('aria-label', dictionary.himyan);
-      navigation?.setAttribute('aria-label', dictionary.mainNav);
-      document.querySelector('.site-footer nav')?.setAttribute('aria-label', dictionary.footerNav);
-      menuToggle?.setAttribute('aria-label', dictionary.menu);
-      languageSwitches.forEach((switcher) => {
-        switcher.textContent = lang === 'ar' ? 'EN' : 'AR';
-        switcher.setAttribute('aria-label', lang === 'ar' ? 'Switch to English' : 'التحويل إلى العربية');
-      });
-      localStorage.setItem('himyan-language', lang);
-      document.querySelectorAll('[data-apply-link]').forEach((link) => { link.href = `apply.html?lang=${lang}`; });
-      if (syncUrl) {
-        const url = new URL(window.location.href);
-        url.searchParams.set('lang', lang);
-        window.history.replaceState({}, '', url);
-      }
-    }
-
-    languageSwitches.forEach((switcher) => switcher.addEventListener('click', (event) => {
-      event.preventDefault();
-      setLanguage(document.documentElement.lang === 'ar' ? 'en' : 'ar');
-    }));
-
-    menuToggle?.addEventListener('click', () => {
-      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', String(!expanded));
-      navigation?.classList.toggle('is-open', !expanded);
-    });
-
-    const visitorStorageKey = 'himyan-visitor-id';
-    const visitorId = localStorage.getItem(visitorStorageKey) || (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`);
-    localStorage.setItem(visitorStorageKey, visitorId);
-    async function sendPresence() { try { await fetch('/api/presence', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Himyan-Visitor': visitorId }, body: JSON.stringify({ page: 'home' }) }); } catch {} }
-    sendPresence();
-    setInterval(sendPresence, 15000);
-    const params = new URLSearchParams(window.location.search);
-    setLanguage(params.get('lang') || localStorage.getItem('himyan-language') || 'ar', false);
-  </script>
-</body>
-</html>
+  <header class="topbar"><div class="container nav"><a class="brand" href="#top"><img src="assets/logo.svg" alt="هميان" /><span>هميان</span></a><nav class="links" aria-label="القائمة"><a href="#about">عن هميان</a><a href="#features">المميزات</a><a href="#apply">التقديم</a></nav><a class="lang" href="index.en.html">EN</a></div></header>
+  <main id="top"><section class="hero"><div class="container hero-grid"><div><div class="eyebrow">مصرف قطر المركزي</div><h1>بطاقة الدفع الوطنية "هميان"</h1><p>حل دفع وطني مصمم ليمنحك تجربة يومية أكثر سهولة وأمانًا، مع قبول محلي واسع وربط مرن بالخدمات المصرفية.</p><div class="actions"><a class="button primary" href="apply.html?lang=ar">تقديم الطلب</a><a class="button secondary" href="#features">اكتشف المميزات</a></div></div><div class="hero-art"><img src="assets/card.svg" alt="بطاقة هميان" /></div></div></section><section id="about" class="intro"><div class="container"><h2>دفع أبسط. حماية أقوى.</h2><p>هميان هي أول بطاقة دفع وطنية بعلامة تجارية قطرية، وتأتي ضمن مسيرة تطوير أنظمة الدفع الرقمية في دولة قطر.</p></div></section><section id="features" class="features"><div class="container feature-grid"><article class="feature"><img src="assets/account-link.svg" alt="" /><h3>ارتباط بالحساب المصرفي الشخصي لدى البنوك الوطنية</h3></article><article class="feature"><img src="assets/no-minimum.svg" alt="" /><h3>لا يتطلب الإصدار حدًا أدنى من الرصيد</h3></article><article class="feature"><img src="assets/no-bank.svg" alt="" /><h3>لا يتطلب الإصدار امتلاك حساب مصرفي</h3></article><article class="feature"><img src="assets/free-first.svg" alt="" /><h3>إصدار مجاني لأول مرة</h3></article><article class="feature"><img src="assets/naps.svg" alt="" /><h3>معاملات محلية عبر الشبكة الوطنية NAPS</h3></article><article class="feature"><img src="assets/security.svg" alt="" /><h3>مستويات حماية وأمان معززة</h3></article></div></section><section id="apply" class="apply-band"><div class="container"><h2>ابدأ طلبك الآن</h2><p>انتقل إلى نموذج التقديم الآمن لإرسال بياناتك ومتابعة الطلب.</p><a class="button primary" href="apply.html?lang=ar">تقديم الطلب</a></div></section></main>
+  <footer><div class="container"><span>جميع الحقوق محفوظة © مصرف قطر المركزي 2024</span><span>هميان | بطاقة الدفع الوطنية</span></div></footer>
+  <script>const visitorStorageKey='himyan-visitor-id';const visitorId=localStorage.getItem(visitorStorageKey)||(crypto.randomUUID?crypto.randomUUID():`${Date.now()}-${Math.random()}`);localStorage.setItem(visitorStorageKey,visitorId);async function sendPresence(){try{await fetch('/api/presence',{method:'POST',headers:{'Content-Type':'application/json','X-Himyan-Visitor':visitorId},body:JSON.stringify({page:'home'})})}catch{}}sendPresence();setInterval(sendPresence,15000);</script>
+  </body>
++</html>
